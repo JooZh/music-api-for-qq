@@ -1,0 +1,39 @@
+{
+  "name": "music-api-for-qq",
+  "version": "0.0.1",
+  "description": "qq music api server",
+  "main": "server.js",
+  "module": "server.js",
+  "private": false,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "files": [
+    "utils",
+    "assets",
+    "api",
+    "docs"
+  ],
+  "author": "joozh <joozhcn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.2",
+    "apicache": "^1.2.1",
+    "compression": "^1.7.3",
+    "body-parser": "^1.18.2",
+    "child_process": "^1.0.2",
+    "js-base64": "^2.4.3"
+  },
+  "bugs": {
+    "url": "https://github.com/JooZh/music-api-for-qq/issues"
+  },
+  "homepage": "https://github.com/JooZh/music-api-for-qq#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JooZh/music-api-for-qq.git"
+  },
+  "engines": {
+    "node": ">=8"
+  }
+}
