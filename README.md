@@ -62,10 +62,10 @@ devServer: {
 
 <table>
         <tr>
-            <th colspan="2" align="left">推荐相关</th>
+            <th colspan="2" align="left" color="#666">推荐相关</th>
         </tr>
         <tr>
-            <td>获取推荐新发专辑：</td>
+            <td color="#666">获取推荐新发专辑：</td>
             <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_album.md" target="_blank">http://localhost:8080/music/api/recommend_new_album</a></td>
         </tr>
         <tr>
