@@ -19,12 +19,12 @@ const musicApi = require('music-api-for-qq')
 
 musicApi.server({
   port: 7001,                 // 启动端口  默认 8080
-  host: '127.0.0.1',          // 开启使用 ip 访问  默认访问为 localhost
+  host: '28.33.176.78',          // 开启使用 ip 访问  默认访问为 localhost
   path: '/music/api'          // 自定义路径 默认为 /music/api
   cache: false                // 开启缓存 默认关闭缓存， 传入 数字 为分钟 传入 false 关闭
 })  
 
-console.log('http://127.0.0.1/music/api')
+console.log('http://28.33.176.78:7001/music/api')
 
 ```
 ## 路由使用
@@ -60,6 +60,38 @@ devServer: {
 
 ## API 列表
 
-获取歌手列表： [http://localhost:80/music/api/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_list.md)
+#### 推荐相关
+获取推荐新发专辑： [http://localhost:8080/music/api/recommend_new_album](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_album.md)
+获取推荐新发MV： [http://localhost:8080/music/api/recommend_new_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_mv.md)
+获取推荐新发单曲： [http://localhost:8080/music/api/recommend_new_song](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_song.md)
+获取为你推荐歌单： [http://localhost:8080/music/api/recommend_songlist_hot](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_songlist_hot.md)
+获取标签推荐歌单： [http://localhost:8080/music/api/recommend_songlist_tag](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_songlist_tag.md)
 
-获取歌手详情： [http://localhost:80/music/api/singer_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_detail.md)
+#### 歌曲相关
+获取歌曲详情： [http://localhost:8080/music/api/song_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/song_detail.md)
+获取歌曲歌词： [http://localhost:8080/music/api/song_lyric](https://github.com/JooZh/music-api-for-qq/blob/master/docs/song_lyric.md)
+获取歌曲播放连接： [http://localhost:8080/music/api/song_play](https://github.com/JooZh/music-api-for-qq/blob/master/docs/song_play.md)
+
+#### 歌手相关
+获取歌手列表： [http://localhost:8080/music/api/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_list.md)
+获取歌手详情： [http://localhost:8080/music/api/singer_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_detail.md)
+获取歌手关注度： [http://localhost:8080/music/api/singer_attention](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_attention.md)
+获取歌手单曲列表： [http://localhost:8080/music/api/singer_song](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_song.md)
+获取歌手歌单列表： [http://localhost:8080/music/api/singer_album](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_album.md)
+获取歌手MV列表： [http://localhost:8080/music/api/singer_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_mv.md)
+获取歌手粉丝MV列表： [http://localhost:8080/music/api/singer_fans_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_fans_mv.md)
+获取相似歌手列表： [http://localhost:8080/music/api/singer_similar](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_similar.md)
+获取歌手背景介绍： [http://localhost:8080/music/api/singer_desc](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_desc.md)
+
+#### 评论相关
+获取评论列表： [http://localhost:8080/music/api/commont_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/commont_list.md)
+
+#### 排行榜相关
+获取排行榜列表： [http://localhost:8080/music/api/top_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/top_list.md)
+获取排行榜详情： [http://localhost:8080/music/api/top_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/top_detail.md)
+
+#### MV 相关
+获取MV详情： [http://localhost:8080/music/api/mv_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_detail.md)
+获取MV文字介绍： [http://localhost:8080/music/api/mv_info](https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_info.md)
+获取相关MV推荐： [http://localhost:8080/music/api/mv_other](https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_other.md)
+获取MV播放链接： [http://localhost:8080/music/api/mv_play](https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_play.md)
