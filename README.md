@@ -60,6 +60,6 @@ devServer: {
 
 ## API 列表
 
-获取歌手列表： [http://localhost:80/music/api/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/dosc/singer_list.md)
+获取歌手列表： [http://localhost:80/music/api/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_list.md)
 
-获取歌手详情： [http://localhost:80/music/api/singer_detail](https://github.com/JooZh/music-api-for-qq/blob/master/dosc/singer_detail.md)
+获取歌手详情： [http://localhost:80/music/api/singer_detail](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_detail.md)
