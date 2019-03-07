@@ -61,8 +61,13 @@ devServer: {
 ## API 列表
 
 #### 推荐相关
-获取推荐新发专辑： [http://localhost:8080/music/api/recommend_new_album](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_album.md)
-获取推荐新发MV： [http://localhost:8080/music/api/recommend_new_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_mv.md)
+| 获取推荐新发专辑： |  [http://localhost:8080/music/api/recommend_new_album](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_album.md)    |
+| ------ | ---- | 
+| 获取推荐新发MV： |   [http://localhost:8080/music/api/recommend_new_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_mv.md)    |      |
+|        |      |      |
+|        |      |      |
+ 
+
 获取推荐新发单曲： [http://localhost:8080/music/api/recommend_new_song](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_new_song.md)
 获取为你推荐歌单： [http://localhost:8080/music/api/recommend_songlist_hot](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_songlist_hot.md)
 获取标签推荐歌单： [http://localhost:8080/music/api/recommend_songlist_tag](https://github.com/JooZh/music-api-for-qq/blob/master/docs/recommend_songlist_tag.md)
