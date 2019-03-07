@@ -2,13 +2,13 @@
 
 ```js
 request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
+  url:'/music/api/singer_detail'    	 		// 请求地址
+  params: {
+    singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
+    begin:0,    							// 【必选】*	单曲开始查询位置
+    num:30, 								// 【必选】*	单曲每次查询返回的条数
+    order:'listen'						// 【可选】		单曲列表的排序方式 
+  }
 }
 ```
 
