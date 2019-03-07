@@ -14,17 +14,18 @@ $ npm install music-api-for-qq -D
 ## 独立服务
 需要自己重新建立一个服务文件
 ```js
-const express = require('express')
+// 创建 server.js 文件
 const musicApi = require('music-api-for-qq')
 
 musicApi.server({
-  port:7001,                // 启动端口  默认 8080
-  host:'10.253.133.229',    // 开启使用 ip 访问  默认访问为 localhost
-  cache:false,              // 开启缓存 默认关闭缓存， 传入 数字 为分钟 传入 false 关闭
-  path: '/music/api'        // 自定义路径 默认为 /music/api
+  port: 7001,                 // 启动端口  默认 8080
+  host: '127.0.0.1',          // 开启使用 ip 访问  默认访问为 localhost
+  path: '/music/api'          // 自定义路径 默认为 /music/api
+  cache: false                // 开启缓存 默认关闭缓存， 传入 数字 为分钟 传入 false 关闭
 })  
 
-console.log('http://10.253.133.229//music/api')
+console.log('http://127.0.0.1/music/api')
+
 ```
 ## 路由使用
 做为路由使用是方便直接嵌入到现有的 webpack 工程项目中。
@@ -59,4 +60,6 @@ devServer: {
 
 ## API 列表
 
+获取歌手列表： [http://localhost:80/music/api/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/dosc/singer_list.md)
 
+获取歌手详情： [http://localhost:80/music/api/singer_detail](https://github.com/JooZh/music-api-for-qq/blob/master/dosc/singer_detail.md)
