@@ -1,6 +1,8 @@
 // 引入库
+
 const axios = require('axios')
 // 引入文件
+require('../utils/colors')
 const baseConfig = require('./config')
 /**
  * @param {} getConfig 读取api 文件夹下配置信息
@@ -51,14 +53,14 @@ function request(getConfig, query, res, apiName) {
   }).then((response) => {
     let data = getConfig.handle(response.data,picSize)
     res.json(data)
-    console.log(`Api: "${apiName}" 请求成功`)
+    console.log(`[music-api] "${apiName}" 请求成功`.info)
   }).catch((error) => {
     res.json({
       status: 0,
-      message:`Api: "${apiName}" 请求失败`,
+      message:`api: "${apiName}" 请求失败`,
       error:error
     })
-    console.log(`Api: "${apiName}" 请求失败`)
+    console.log(`[music-api] "${apiName}" 请求失败`.error)
   })
 }
 

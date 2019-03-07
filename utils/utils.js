@@ -1,4 +1,4 @@
-
+require('./colors')
 // 获取相对路径
 const getApiStr = (url) => {
   let api = ''
@@ -23,9 +23,9 @@ const getConfig = (api,res) => {
   } catch (e){
     res.json({
       status: 0,
-      message:`Api: "${api}" 不存在`
+      message:`api: "${api}" 不存在`
     })
-    console.log(`Api: "${api}" 不存在`)
+    console.log(`[music-api] "${api}" 不存在`.warn)
     return null
   }
 }

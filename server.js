@@ -2,26 +2,52 @@
 const express = require('express')
 const cache = require('apicache').middleware
 const compression = require('compression')
-// const package = require('./package.json')
-// const exec = require('child_process').exec
+const packageJson = require('./package.json')
+const exec = require('child_process').exec
+const ip = require('ip')
 
-// 引入api文件
+// 引入文件
+require('./utils/colors')
 const utils = require('./utils/utils')
 const axios = require('./assets/axios')
 
-function createServer(server){
-  // version check 版本检测
-  // exec('npm info NeteaseCloudMusicApi version', (err, stdout, stderr) => {
-  //   if (!err) {
-  //     let onlineVersion = stdout.trim()
-  //     let localVersion = package.version
-  //     if (localVersion < onlineVersion) {
-  //       console.log(`最新版本: ${onlineVersion}, 当前版本: ${localVersion}, 请及时更新`)
-  //     }
-  //   }
-  // })
-  // CORS 跨域检测
-  server.use((req, res, next) => {
+
+// 解析 path 参数
+function parsPath(path){
+  let paths = {};
+  let pathArr = path.split('/').filter(path => {
+    return path !== null && path !== undefined && path !== '';
+  })
+  if(pathArr.length > 0){
+    paths.router = `/${pathArr.pop()}`;
+    paths.server = `/${pathArr.join('/')}`
+  }else{
+    paths.router = `/api`;
+    paths.server = `/music`
+  }
+  return paths;
+}
+
+// 路由模式 ============================================================
+function router(path = '/api') {
+  if(path.split('/').length > 2){
+    throw new Error('custom routing formats support only one hierarchy. eg: "/api" '.error)
+  }else if(path.indexOf('/') !== 0){
+    throw new Error('The route must be opened with "/". eg: "/api"'.error)
+  }
+
+  // 验证版本
+  exec('npm info music-api-for-qq version', (err, stdout, stderr) => {
+    if (!err) {
+      let onlineVersion = stdout.trim()
+      let localVersion = packageJson.version
+      console.log(`[music-api] latest version: ${onlineVersion}, current version: ${localVersion}, please update timely.`.debug)
+    }
+  })
+  // 创建路由
+  const router = express.Router() 
+  // 允许跨域
+  router.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
       res.header({
         'Access-Control-Allow-Credentials': true,
@@ -33,13 +59,8 @@ function createServer(server){
     }
     next()
   });
-
-  // 开启缓存
-  // server.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
-  // 开启 gzip 压缩
-  server.use(compression());
   // 开启 监听
-  server.use((req, res) => {
+  router.all(`${path}/*`, (req, res) => {
     let url = req.url;                             // 得到路径
     let query = req.query;                         // 得到参数
     let apiName = utils.getApiStr(url);            // 得到路由名称
@@ -48,21 +69,48 @@ function createServer(server){
       axios(getConfig,query,res,apiName)
     }
   });
+  // 需要将路由返回出去
+  return router
 }
 
-
-// server.use('/', express.static(__dirname + "/home"))
-
-function runServer(option){
-  
-  if(typeof option == 'number'){              // 如果传入了服务对象
-    const server = express()  // 创建一个服务
-    server.listen(option)     // 监听7001端口
-    console.log('服务已经开启: ', `http://localhost:${option}`)
-    createServer(server)
-  }else{                      // 如果没有传入服务对象
-    createServer(option)
+// 服务模式 ============================================================
+function server (options) {
+  let port = (options && options.port) ? options.port : 8080;
+  let cache = (options && options.cache) ? options.cache : false;
+  let host = (options && options.host) ? options.host : 'localhost';
+  let path = (options && options.path) ? options.path : '/music/api';
+  // 判断
+  if(path.indexOf('/') !== 0){
+    throw new Error('The route must be opened with "/". eg: "/music/api"'.error)
   }
+  // 解析当前传入的路由
+  let paths = parsPath(path)
+
+  const server = express()
+  const route = router(paths.router)
+  // 手动 ip 地址配置
+  if(ip.isV4Format(host)){
+    host = ip.address();
+  }
+  // 开启缓存
+  if(cache && typeof cache === 'boolean'){
+    server.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
+  }else if(cache && typeof cache === 'number'){
+    server.use(cache(`${cache} minutes`, ((req, res) => res.statusCode === 200)))
+  }
+  // 开启 gzip 压缩
+  server.use(compression());
+  // 使用路由
+  server.use(paths.server, route);
+  // 创建服务
+  server.listen(port);
+  // 输出请求接口信息
+  console.log( `[music-api] server start: http://${host}:${port+path}/... `.debug,)
+  // 将服务返回
+  return server
 }
 
-module.exports = runServer
+module.exports = {
+  router,
+  server
+}
