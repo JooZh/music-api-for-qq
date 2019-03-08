@@ -9,7 +9,11 @@ const config = {
       num: res.num,
       str: `${(res.num/10000).toFixed(1)}万`
     };
-    return newData
+    return {
+      status:0,
+      message:'ok',
+      data:newData
+    }
   }
 }
 

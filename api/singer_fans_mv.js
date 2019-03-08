@@ -8,7 +8,7 @@ const config = {
     order: 'time',
     begin: 0,
     num: 5,
-    cmd: 1
+    // cmd: 1
   },
   handle:(res) => {
     let data = res.data
@@ -17,9 +17,30 @@ const config = {
       list:[]
     };
     data.list.forEach(item => {
-      newData.list.push(item)
+      newData.list.push({
+        index:item.index,
+        score:item.score,
+        mv_mid:item.vid,
+        mv_id:item.id,
+        mv_title:item.title,
+        mv_desc:item.desc,
+        mv_pic:item.pic,
+        singer_id:item.singer_id,
+        singer_name:item.singer_name,
+        singer_mid:item.singer_mid,
+        upload_uin:item.upload_uin,
+        upload_nick:item.upload_nick,
+        upload_pic:item.upload_pic,
+        upload_date:item.date,
+        listen_num:item.listenCount,
+        listen_str:`${(item.listenCount/10000).toFixed(1)}万`,
+      })
     });
-    return newData
+    return {
+      status:0,
+      message:'ok',
+      data:newData
+    }
   }
 } 
 

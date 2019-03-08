@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>接口测试页面</title>
 </head>
+
 <body>
-  
+
 </body>
 <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script>
-axios.post('http://localhost:7001/music/api/singer_list',{
+  // let params = {
+  //   singermid:'0025NhlN2yWrP4'
+  // }
+  // let url= 'http://localhost:7001/music/api/singer_song'
 
-}).then((res)=>{
-  console.log(res)
-})
-axios.post('http://localhost:7001/music/api/singer_song',{
-  params:{
-    'singermid': '0025NhlN2yWrP4',
-    'begin': 31,
-    'num': 30
+  let params = {
+    picSize:800,
+    data:{
+      singerAlbum:{
+        singermid: "003Nz2So3XXYek",
+        order: "time",
+        begin: 0,
+        num: 30,
+      }
+    }    
   }
-}).then((res)=>{
-  console.log(res)
-})
+  let url = 'http://localhost:7001/music/api/singer_album'
+
+  axios.get(url, {
+    params: params
+  }).then((res) => {
+    console.log(res)
+  })
 </script>
+
 </html>

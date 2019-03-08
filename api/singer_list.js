@@ -2,6 +2,7 @@
 const config = {
   url: '',
   options: {
+    picSize:800,
     data:{
       singerList:{
         module: "Music.SingerListServer",
@@ -34,7 +35,11 @@ const config = {
         singer_avatar: singer_avatar
       })
     });
-    return newData
+    return {
+      status:0,
+      data:newData,
+      message:'ok'
+    }
   }
 }
 

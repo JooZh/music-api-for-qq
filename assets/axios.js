@@ -33,9 +33,16 @@ function request(getConfig, query, res, apiName) {
     headers = baseConfig.uqq.headers
     // 合并url中的 data 参数对象 然后删除 data 对象
     if(query.data){
-      let assignNames = Object.keys(query.data)
+      let queryData 
+      // 判断传递过来的参数类型
+      if(typeof query.data === 'string'){
+        queryData = JSON.parse(query.data)
+      }else{
+        queryData = query.data
+      }
+      let assignNames = Object.keys(queryData)
       assignNames.forEach(name=>{
-        Object.assign(options.data[name].param, query.data[name].param)
+        Object.assign(options.data[name].param, queryData[name])
       })
       delete query.data
     }
@@ -45,7 +52,7 @@ function request(getConfig, query, res, apiName) {
     params.data = JSON.stringify(options.data)
     // console.log(options.data)
   }
-  // console.log(params)
+  console.log(params)
   // 发送请求
   axios.get(url, {
     headers: headers,

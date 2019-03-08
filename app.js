@@ -14,7 +14,7 @@ const musicApi = require('./server')
 musicApi.server({
   port:7001,
   host:'10.253.133.229',
-  cache:true,
+  cache:false,
   use: function(server,express){
     server.use('/',express.static(__dirname + "/demo"))
   }

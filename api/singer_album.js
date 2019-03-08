@@ -7,11 +7,11 @@ const config = {
         method: "get_singer_album",
         module: "music.web_singer_info_svr",
         param: {
-          singermid: "003Nz2So3XXYek",
+          singermid: "002J4UUk29y8BY",
           order: "time",
           begin: 0,
           num: 30,
-          exstatus: 1
+          // exstatus: 1
         }
       }
     }    
@@ -35,13 +35,18 @@ const config = {
         album_pic: album_pic,
         album_desc:item.desc,
         pub_time: item.pub_time,
-        listen_count: item.listen_count,
+        listen_num:item.listen_count,
+        listen_str:`${(item.listen_count/10000).toFixed(1)}万`,
         attribute5: item.attribute5,
         score:item.score,
         lan: item.lan,
       })
     });
-    return newData
+    return {
+      status:0,
+      message:'ok',
+      data:newData
+    }
   }
 }
 

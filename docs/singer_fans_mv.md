@@ -1,38 +1,73 @@
-##### 获取歌手详情：
+## 获取粉丝上传MV列表
 
-```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
-}
+#### 全路径:
+
+```
+http://localhost:8080/music/api/singer_fans_mv
 ```
 
+#### 前置条件
+
+> 需要得到歌手 mid    
+>
+> 相关接口：[http://localhost:8080/music/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_list.md)
+
+#### 参数说明
+
+| 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
+| :-------- | -------------- | ------ | ---- | -------- | ------------------ |
+| singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
+| begin     | 0              | number | *    | 无       | 开始查询位置       |
+| num       | 5             | number | *    | 无       | 每次查询返回的条数 |
+| order     | time         | string | *    | ['listen'] | 列表的排序方式     |
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值
+
 ```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
+axios.get(url, {
+  params:{
+    singermid: '002J4UUk29y8BY',
+    begin: 0,
+    num: 5,
+    order: 'time'
+  }
+}).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:{
+    total: 208,                         //  单曲总数
+    list:[
+      {
+        index: 1,                       //  序号
+        score: 0,
+        mv_mid: "o0016t2ucce",
+        mv_id: 370246,
+        mv_title: "演员",
+        mv_desc: ,
+        mv_pic: "http://y.gtimg.cn/music/photo_new/T015R640x360M101000SDc5i3Z3ay6.jpg",
+        singer_id: 5062,
+        singer_name: "薛之谦,
+        singer_mid: "002J4UUk29y8BY",
+        upload_uin: 390180732,
+        upload_nick: "單莼﹖",
+        upload_pic: "http://thirdqq.qlogo.cn/g?b=sdk&k=wtQt3mzI2miap2PQcLwwtIw&s=100&t=0",
+        upload_date: 2015-06-08,
+        listen_num: 30333976,
+        listen_str: "3033.4万"
       },
       ......
     ]
+  }
 }
 ```
+
