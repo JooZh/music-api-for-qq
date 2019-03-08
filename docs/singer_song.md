@@ -25,14 +25,14 @@ http://localhost:8080/music/api/singer_song
 
 ```js
 axios.get(url, {
-  	params:{
-      singermid: '002J4UUk29y8BY',
-      begin: 0,
-      num: 30,
-      order: 'listen'
-  	}
+  params:{
+    singermid: '002J4UUk29y8BY',
+    begin: 0,
+    num: 30,
+    order: 'listen'
+  }
 }).then((response)=>{
-  	response.data
+  response.data
 })
 ```
 
@@ -40,27 +40,28 @@ axios.get(url, {
 
 ```js
 response: {
-    singer_id: "5062",                  //  歌手 id
-    singer_mid: "002J4UUk29y8BY",       //  歌手 mid 
-    singer_name: "薛之谦",               //  歌手名称
-    total: 208,                         //  单曲总数
-    list:[{
-        index: 1,                       //  序号
-        interval_num: 248,              //  歌曲总时长
-        interval_str: "04.13",          //  歌曲格式化时长
-        album_id: 5724335,              //  所属专辑 id
-        album_mid: "0015rUVB2OUdGA",    //  所属专辑 mid
-        album_desc: "",                 //  所属专辑描述
-        album_name: "怪咖",              //  所属专辑名称
-        song_id: 225584334,             //  歌曲 id
-        song_mid: "000Qepff3UyUWO",     //  歌曲 mid
-        song_name: "天份",               //  歌曲名称
-        song_orig: "天份",               //  
-        song_type: 0,                   //  歌曲类型
-        mv_mid: "a0029621gkf"           //  MV的 mid
-      },
-      ......
-    ]
+  singer_id: "5062",                  //  歌手 id
+  singer_mid: "002J4UUk29y8BY",       //  歌手 mid 
+  singer_name: "薛之谦",               //  歌手名称
+  total: 208,                         //  单曲总数
+  list:[
+    {
+      index: 1,                       //  序号
+      interval_num: 248,              //  歌曲总时长
+      interval_str: "04.13",          //  歌曲格式化时长
+      album_id: 5724335,              //  所属专辑 id
+      album_mid: "0015rUVB2OUdGA",    //  所属专辑 mid
+      album_desc: "",                 //  所属专辑描述
+      album_name: "怪咖",              //  所属专辑名称
+      song_id: 225584334,             //  歌曲 id
+      song_mid: "000Qepff3UyUWO",     //  歌曲 mid
+      song_name: "天份",               //  歌曲名称
+      song_orig: "天份",               //  
+      song_type: 0,                   //  歌曲类型
+      mv_mid: "a0029621gkf"           //  MV的 mid
+    },
+    ......
+  ]
 }
 ```
 
