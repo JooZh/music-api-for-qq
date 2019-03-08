@@ -1,7 +1,8 @@
 // 必备的库文件
 const express = require('express')
-const cache = require('apicache').middleware
+const apicache = require('apicache').middleware
 const compression = require('compression')
+const body = require('body-parser')
 const packageJson = require('./package.json')
 const exec = require('child_process').exec
 const ip = require('ip')
@@ -79,6 +80,7 @@ function server (options) {
   let cache = (options && options.cache) ? options.cache : false;
   let host = (options && options.host) ? options.host : 'localhost';
   let path = (options && options.path) ? options.path : '/music/api';
+
   // 判断
   if(path.indexOf('/') !== 0){
     throw new Error('The route must be opened with "/". eg: "/music/api"'.error)
@@ -92,21 +94,37 @@ function server (options) {
   if(ip.isV4Format(host)){
     host = ip.address();
   }
+  // 传入的 use 
+  if(options && options.use && typeof options.use === 'function'){
+    options.use(server,express)
+  }
   // 开启缓存
   if(cache && typeof cache === 'boolean'){
-    server.use(cache('2 minutes', ((req, res) => res.statusCode === 200)))
+    server.use(apicache('2 minutes', ((req, res) => res.statusCode === 200)))
   }else if(cache && typeof cache === 'number'){
-    server.use(cache(`${cache} minutes`, ((req, res) => res.statusCode === 200)))
+    server.use(apicache(`${cache} minutes`, ((req, res) => res.statusCode === 200)))
+  }else{
+    server.use(function(req, res, next){
+      res.append('Connection', 'keep-alive close');
+      res.append('Cache-Control', 'no-cache');
+      next();
+    });
   }
+  // 解析post参数
+  server.use(body.urlencoded({
+    extended: false
+  }));
+
   // 开启 gzip 压缩
   server.use(compression());
   // 使用路由
   server.use(paths.server, route);
+  
   // 创建服务
   server.listen(port);
   // 输出请求接口信息
   console.log( `[music-api] server start: http://${host}:${port+path}/... `.debug,)
-  // 将服务返回
+  // 将服务返回 提供给外部使用
   return server
 }
 

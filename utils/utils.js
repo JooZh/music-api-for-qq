@@ -30,7 +30,17 @@ const getConfig = (api,res) => {
   }
 }
 
+const formatTime = (time) =>{
+  let m = Math.floor(time/60);
+  m = m < 10 ? `0${m}`: m
+  let s = time - (m * 60);
+  s = s < 10 ? `0${s}`: s
+  
+  return `${m}:${s}`
+}
+
 module.exports = {
   getApiStr,
-  getConfig
+  getConfig,
+  formatTime
 }

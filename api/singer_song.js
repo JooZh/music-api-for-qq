@@ -1,4 +1,5 @@
 
+const {formatTime} = require('../utils/utils')
 // 歌手歌曲列表
 const config = {
   url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg',
@@ -23,7 +24,7 @@ const config = {
       newData.list.push({
         index:item.index,
         interval_num:item.musicData.interval,
-        interval_str: `0${(item.musicData.interval/60).toFixed(2)}`,
+        interval_str: formatTime(item.musicData.interval),
         album_id:item.musicData.albumid,
         album_mid:item.musicData.albummid,
         album_desc:item.musicData.albumdesc,
@@ -36,7 +37,11 @@ const config = {
         mv_mid:item.musicData.vid
       })
     });
-    return newData
+    return {
+      status:0,
+      data:newData,
+      message:'ok'
+    }
   }
 } 
 

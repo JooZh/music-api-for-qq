@@ -54,6 +54,7 @@ devServer: {
 +  app.use('/music',musicApi.router('/api'))
 + }
 
+// 3. 然后请求 http://localhost:8080/music/api/.... 即可
 }
 
 ```

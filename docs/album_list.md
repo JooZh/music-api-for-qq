@@ -1,38 +1,65 @@
-##### 获取歌手详情：
+## 获取歌手单曲列表
+
+#### 全路径:
+
+```
+http://localhost:8080/music/api/singer_song
+```
+
+#### 前置条件
+
+> 需要得到歌手 mid    
+>
+> 相关接口：[http://localhost:8080/music/singer_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_list.md)
+
+#### 参数说明
+
+| 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
+| :-------- | -------------- | ------ | ---- | -------- | ------------------ |
+| singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
+| begin     | 0              | number | *    | 无       | 开始查询位置       |
+| num       | 30             | number | *    | 无       | 每次查询返回的条数 |
+| order     | listen         | string |      |          | 列表的排序方式     |
+
+#### 请求方式
 
 ```js
-request: {
-  url:'/music/api/singer_detail'    	 		// 请求地址
-  params: {
-    singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-    begin:0,    							// 【必选】*	单曲开始查询位置
-    num:30, 								// 【必选】*	单曲每次查询返回的条数
-    order:'listen'						// 【可选】		单曲列表的排序方式 
+axios.get(url,{
+  params:{
+    'key': 'value'
   }
-}
+}).then((response)=>{
+  response.data
+})
 ```
+
+
+
+#### 返回数据:
 
 ```js
 response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
+    singer_id: "5062",                  //  歌手 id
+    singer_mid: "002J4UUk29y8BY",       //  歌手 mid 
+    singer_name: "薛之谦",               //  歌手名称
+    total: 208,                         //  单曲总数
     list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
+        index: 1,                       //  序号
+        interval_num: 248,              //  歌曲总时长
+        interval_str: "04.13",          //  歌曲格式化时长
+        album_id: 5724335,              //  所属专辑 id
+        album_mid: "0015rUVB2OUdGA",    //  所属专辑 mid
+        album_desc: "",                 //  所属专辑描述
+        album_name: "怪咖",              //  所属专辑名称
+        song_id: 225584334,             //  歌曲 id
+        song_mid: "000Qepff3UyUWO",     //  歌曲 mid
+        song_name: "天份",               //  歌曲名称
+        song_orig: "天份",               //  
+        song_type: 0,                   //  歌曲类型
+        mv_mid: "a0029621gkf"           //  MV的 mid
       },
       ......
     ]
 }
 ```
+
