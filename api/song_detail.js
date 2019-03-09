@@ -49,7 +49,7 @@ const config = {
           }
         })
       })
-    })
+    });
 
     let song_gedan = res.song_gedan.data.vec_gedan.map(v=>{
       return {
@@ -61,7 +61,7 @@ const config = {
         creator: v.creator,
         song_num: v.song_num
       }
-    })
+    });
 
     let track_info = res.songinfo.data.track_info
     let track = {
@@ -79,10 +79,8 @@ const config = {
           title: v.title,
           name: v.name,
         }
-      }),
-
-    }
-
+      })
+    };
 
     let labels = {}
     let songinfo = res.songinfo.data.info
@@ -99,8 +97,7 @@ const config = {
           }
         })
       }
-    })
-    
+    });
 
     let newData = {
       song_mv:song_mv,
@@ -109,10 +106,9 @@ const config = {
         track:track,
         lables:labels
       }
-    }
+    };
     // return res
     return newData
-
   }
 }
 

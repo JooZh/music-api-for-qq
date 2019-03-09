@@ -1,38 +1,76 @@
-##### 获取歌手详情：
+## 获取排行榜详情
 
-```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
-}
+#### 全路径:
+
+```
+http://localhost:8080/music/api/top_detail
 ```
 
+#### 前置条件
+
+> 需要得到 排行ID    
+>
+> 相关接口：[http://localhost:8080/music/top_list](https://github.com/JooZh/music-api-for-qq/blob/master/docs/top_list.md)
+
+#### 参数说明
+
+| 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
+| :-------- | -------------- | ------ | ---- | -------- | ------------------ |
+| topid | 26 | number | *    | 无       | 排行榜 id     |
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值
+
 ```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
+axios.get(url, {
+  params:{
+    topid: 26  
+  }
+}).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:{
+    total: 300,
+    list_name: "巅峰榜·热歌",
+    list_info: "一周最具人气歌曲排行榜，....",
+    listen_num": 19200000,
+    listen_str: "1920.0万",
+    update_time: "2019-03-07",
+    week: "9",
+    song_list:[
+      {
+        song_id: 225716644,
+        song_mid: "002krvKI4Jgvq9",
+        song_name: "知否知否",
+        album_id: 5868415,
+        album_mid: "003hzX7h4Flbcb",
+        album_name: "知否知否应是绿肥红瘦 电视剧原声带",
+        album_desc: "《知否知否应是绿肥红瘦》电视剧主题曲",
+        mv_mid: "",
+        interval_num: 276,
+        interval_str: "04.60",
+        is_pay: 0,                // 绿钻才能播放
+        singers: [
+          {
+            id: 24833,
+            mid: "002mze3U0NYXOM",
+            name: "胡夏"
+          },
+          ......
+        ]
       },
       ......
     ]
+  }
 }
 ```
+

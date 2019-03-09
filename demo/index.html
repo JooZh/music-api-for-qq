@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    接口测试页面
 </body>
 <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 <script>
@@ -19,17 +19,10 @@
   // let url= 'http://localhost:7001/music/api/singer_song'
 
   let params = {
-    picSize:800,
-    data:{
-      singerAlbum:{
-        singermid: "003Nz2So3XXYek",
-        order: "time",
-        begin: 0,
-        num: 30,
-      }
-    }    
+    song_mid: "003jjoM94WLiTf",
+    guid:88997979
   }
-  let url = 'http://localhost:7001/music/api/singer_album'
+  let url = 'http://localhost:7001/music/api/top_list'
 
   axios.get(url, {
     params: params

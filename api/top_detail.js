@@ -35,6 +35,7 @@ const config = {
         singers:item.data.singer,
       })
     });
+    
     return newData
   }
 } 

@@ -1,53 +1,60 @@
 // 歌手专辑列表
 const formDate = require('../utils/date')
-const config = {
-  url: '',
-  options: {
-    data: {
-      getMVUrl: {
-        module: "gosrf.Stream.MvUrlProxy",
-        method: "GetMvUrls",
-        param: {
-          vids: ["v00149ipnk5"],
-          request_typet: 10001
-        }
-      },
-      mvinfo: {
-        module: "video.VideoDataServer",
-        method: "get_video_info_batch",
-        param: {
-          vidlist: ["v00149ipnk5"],
-          required: [
-            "vid",
-            "cover_pic",
-            "duration",
-            "singers",
-            "name",
-            "desc",
-            "playcnt",
-            "pubdate"
-          ]
-        }
-      },
-      other: {
-        module: "video.VideoLogicServer",
-        method: "rec_video_byvid",
-        param: {
-          vid: "v00149ipnk5",
-          required: [
-            "vid", 
-            "cover_pic", 
-            "duration",  
-            "name", 
-            "desc", 
-            "playcnt", 
-            "pubdate",  
-            "uploader_nick",  
-          ],
-          support: 1
-        }
+
+const options = {
+  data: {
+    getMVUrl: {
+      module: "gosrf.Stream.MvUrlProxy",
+      method: "GetMvUrls",
+      param: {
+        vids: ["v00149ipnk5"],
+        request_typet: 10001
+      }
+    },
+    mvinfo: {
+      module: "video.VideoDataServer",
+      method: "get_video_info_batch",
+      param: {
+        vidlist: ["v00149ipnk5"],
+        required: [
+          "vid",
+          "cover_pic",
+          "duration",
+          "singers",
+          "name",
+          "desc",
+          "playcnt",
+          "pubdate"
+        ]
+      }
+    },
+    other: {
+      module: "video.VideoLogicServer",
+      method: "rec_video_byvid",
+      param: {
+        vid: "v00149ipnk5",
+        required: [
+          "vid", 
+          "cover_pic", 
+          "duration",  
+          "name", 
+          "desc", 
+          "playcnt", 
+          "pubdate",  
+          "uploader_nick",  
+        ],
+        support: 1
       }
     }
+  }
+}
+const config = {
+  url: '',
+  options: options,
+  merge:(query,dotPorp) => {
+    let options = options;
+    
+     
   },
   handle: (res) => {
     let mvurls = res.getMVUrl.data

@@ -38,11 +38,7 @@ const config = {
       })
     });
     
-    return {
-      status:0,
-      data:newData,
-      message:'ok'
-    }
+    return newData
   }
 } 
 

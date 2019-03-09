@@ -2,7 +2,7 @@
 const express = require('express')
 const apicache = require('apicache').middleware
 const compression = require('compression')
-const body = require('body-parser')
+const bodyParser = require('body-parser')
 const packageJson = require('./package.json')
 const exec = require('child_process').exec
 const ip = require('ip')
@@ -11,6 +11,7 @@ const ip = require('ip')
 require('./utils/colors')
 const utils = require('./utils/utils')
 const axios = require('./assets/axios')
+const merge = require('./assets/merge')
 
 
 // 解析 path 参数
@@ -62,12 +63,13 @@ function router(path = '/api') {
   });
   // 开启 监听
   router.all(`${path}/*`, (req, res) => {
-    let url = req.url;                             // 得到路径
-    let query = req.query;                         // 得到参数
-    let apiName = utils.getApiStr(url);            // 得到路由名称
-    let getConfig = utils.getConfig(apiName,res);  // 读取配置文件
-    if(getConfig){                                 // 请求资源
-      axios(getConfig,query,res,apiName)
+    let apiName = utils.getApiName(req.url);                                        // 得到api名称
+    let query = JSON.stringify(req.query) === "{}" ? req.body : req.query;          // 得到参数    
+    let apiConfig = utils.getApiConfig(apiName,res);                                // 读取配置文件
+    let mergeReslut = merge(query, apiConfig)                           // 合并参数
+    
+    if(apiConfig){                                                                  // 请求资源
+      axios(mergeReslut,apiName,res)
     }
   });
   // 需要将路由返回出去
@@ -111,7 +113,8 @@ function server (options) {
     });
   }
   // 解析post参数
-  server.use(body.urlencoded({
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({
     extended: false
   }));
 

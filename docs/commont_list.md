@@ -1,38 +1,98 @@
-##### 获取歌手详情：
+## 获取歌手列表
+
+#### 全路径:
+
+```
+http://localhost:8080/music/api/commont_list
+```
+
+#### 前置条件
+
+> 需要得到   MV mid  或者 专辑 id  或者 歌曲 id  
+>
+> 相关接口：[http://localhost:8080/music/singer_mv](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_mv.md)
+> 相关接口：[http://localhost:8080/music/singer_song](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_song.md)
+> 相关接口：[http://localhost:8080/music/singer_album](https://github.com/JooZh/music-api-for-qq/blob/master/docs/singer_album.md)
+
+#### 参数说明
+
+| 参数名   | 默认值 | 类型   | 必填 | 可选参数                          | 说明               |
+| :------- | ------ | ------ | ---- | --------------------------------- | ------------------ |
+| topid     | v00149ipnk5  | string / number | *    | 无 | MV mid  或者 专辑 id  或者 歌曲 id |
+| reqtype | 2   | number | *    | 无 | 未知   |
+| biztype | 5  | number | *    | 无         | 未知 |
+| pagenum | 0      | number | * | 无 | 开始加载的位置 |
+| pagesize | 25   | number | * | 无 | 每次加载多少数量 |
+
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值
 
 ```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
+axios.get(url, {
+  params:{
+    reqtype: 2,
+    biztype: 5,
+    topid: "v00149ipnk5",
+    pagenum: 0,
+    pagesize: 25,
+  }  
+}).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:{
+    hot_comment:{
+      total: 32,
+      list:[
+        {
+          nick: "Sea",
+          time: "2017-01-14",
+          avatar: "http://thirdqq.qlogo.cn/g?b=sdk&k=iaYDJDOGLSic...",
+          praisenum: 288,
+          content: "你要知道这是家驹的歌 别搞错的 还拍个mv搞的跟你的歌一样.",
+          reply: [
+            {
+              replyednick: "@阿宇小朋友ღ",
+              replynick: "@Sea",
+              replycontent: "有谁说不是家驹的歌了？拍个mv咋了，我觉得...."
+            },
+            ....
+          ]
+        },
+        .....
+      ]     
+    },
+    new_comment:{
+      total: 32,
+      list:[
+        {
+          nick: "Sea",
+          time: "2017-01-14",
+          avatar: "http://thirdqq.qlogo.cn/g?b=sdk&k=iaYDJDOGLSicUYZlC4c....",
+          praisenum: 288,
+          content: "你要知道这是家驹的歌 别搞错的 还拍个mv搞的跟你的歌一样.",
+          reply: [
+            {
+              replyednick: "@阿宇小朋友ღ",
+              replynick: "@Sea",
+              replycontent: "有谁说不是家驹的歌了？拍个mv咋了，我觉得经典...."
+            },
+            ....
+          ]
+        },
+        .....
+      ]   
     }
+  }
 }
 ```
 
-```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
-      },
-      ......
-    ]
-}
-```

@@ -35,11 +35,7 @@ const config = {
         listen_str:`${(item.listenCount/10000).toFixed(1)}万`,
       })
     });
-    return {
-      status:0,
-      message:'ok',
-      data:newData
-    }
+    return newData
   }
 } 
 

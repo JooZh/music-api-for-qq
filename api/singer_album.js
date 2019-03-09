@@ -42,11 +42,7 @@ const config = {
         lan: item.lan,
       })
     });
-    return {
-      status:0,
-      message:'ok',
-      data:newData
-    }
+    return newData
   }
 }
 

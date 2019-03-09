@@ -1,3 +1,4 @@
+const {formatTime} = require('../utils/utils');
 // 相似歌手列表
 const config = {
   url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg',
@@ -22,7 +23,7 @@ const config = {
       list:data.list.map(item=>{
         return {
           interval_num: item.interval,
-          interval_str: `0${(item.interval/60).toFixed(2)}`,
+          interval_str: formatTime(item.interval),
           song_id: item.songid,
           song_mid: item.songmid,
           song_name: item.songname,

@@ -14,12 +14,12 @@ http://localhost:8080/music/api/singer_mv
 
 #### 参数说明
 
-| 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
-| :-------- | -------------- | ------ | ---- | -------- | ------------------ |
-| singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
-| begin     | 0              | number | *    | 无       | 开始查询位置       |
-| num       | 20             | number | *    | 无       | 每次查询返回的条数 |
-| order     | listen         | string | *    | ['time'] | 列表的排序方式     |
+| 参数名    | 默认值         | 类型   | 必填 | 可选参数          | 说明               |
+| :-------- | -------------- | ------ | ---- | ----------------- | ------------------ |
+| singermid | 002J4UUk29y8BY | string | *    | 无                | 歌手的唯一标识     |
+| begin     | 0              | number | *    | 无                | 开始查询位置       |
+| num       | 20             | number | *    | 无                | 每次查询返回的条数 |
+| order     | listen         | string | *    | ['listen','time'] | 列表的排序方式     |
 
 #### 请求方式
 
@@ -56,12 +56,12 @@ axios.get(url, {
         mv_desc: ,
         mv_pic: "http://y.gtimg.cn/music/photo_new/T015R640x360M101000SDc5i3Z3ay6.jpg",
         singer_id: 5062,
-        singer_name: "薛之谦,
+        singer_name: "薛之谦",
         singer_mid: "002J4UUk29y8BY",
         upload_uin: 390180732,
         upload_nick: "單莼﹖",
         upload_pic: "http://thirdqq.qlogo.cn/g?b=sdk&k=wtQt3mzI2miap2PQcLwwtIw&s=100&t=0",
-        upload_date: 2015-06-08,
+        upload_date: "2015-06-08",
         listen_num: 30333976,
         listen_str: "3033.4万"
       },

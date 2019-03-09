@@ -20,7 +20,7 @@ http://localhost:8080/music/api/singer_album
 | singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
 | begin     | 0              | number | *    | 无       | 开始查询位置       |
 | num       | 30             | number | *    | 无       | 每次查询返回的条数 |
-| order     | time         | string | * | ['listen'] | 列表的排序方式     |
+| order     | time         | string | * | ['listen','time'] | 列表的排序方式     |
 
 #### 请求方式
 

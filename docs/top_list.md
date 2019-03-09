@@ -1,38 +1,54 @@
-##### 获取歌手详情：
+## 获取排行榜列表
+
+#### 全路径:
+
+```
+http://localhost:8080/music/api/top_list
+```
+
+#### 前置条件
+
+> 无
+>
+
+#### 参数说明
+
+> 无
+>
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值
 
 ```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
+axios.get(url).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:[
+    {
+      id: 4,
+      top_pic: "http://y.gtimg.cn/music/photo_new/T003R300x300M000002ds7XQ1NQlW2.jpg",
+      top_title: "巅峰榜·流行指数",
+      listen_num: 19500000,
+      listen_str: "1950.0万",
+      song_list: [
+        {
+          song_name: "好想大声说爱你 (Live)",
+          singer_name: "声入人心男团"
+        },
+        ......
+      ]
+    },
+    ......
+  ]
 }
 ```
 
-```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
-      },
-      ......
-    ]
-}
-```

@@ -13,19 +13,15 @@ const config = {
           type: -1,
           year: -1,
           sort: 2,
-          get_tags: 1,
+          // get_tags: 1,
           sin: 0,
           num: 20,
-          click_albumid: 0
-        },
-      },
-      comm: {
-        ct: 24,
-        cv: 0
+          // click_albumid: 0
+        }
       }
     }
   },
-  handle: (res) => {
+  handle: (res,picSize) => {
     let data = res.albumlib.data
     let tagsKeys = Object.keys(data.tags)
     let tags = {}
@@ -44,8 +40,10 @@ const config = {
           album_id: item.album_id,
           album_mid: item.album_mid,
           album_name: item.album_name,
+          album_pic:`http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`,
           public_time: item.public_time,
-          singers:item.singers
+          singers:item.singers,
+
         }
       }),
       tags:tags

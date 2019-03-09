@@ -22,11 +22,7 @@ const config = {
         singer_avatar: singer_avatar
       })
     });
-    return {
-      status:0,
-      message:'ok',
-      data:newData
-    }
+    return newData
   }
 }
 

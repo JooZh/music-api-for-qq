@@ -38,11 +38,7 @@ const config = {
         value:values
       })
     });
-    return {
-      status:0,
-      message:'ok',
-      data:dataJson
-    }
+    return dataJson
   } 
 }
 

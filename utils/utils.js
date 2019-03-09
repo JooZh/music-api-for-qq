@@ -1,6 +1,6 @@
 require('./colors')
 // 获取相对路径
-const getApiStr = (url) => {
+const getApiName = (url) => {
   let api = ''
   if(url.indexOf('?') !== -1){
     let router = url.split('?')[0];
@@ -12,20 +12,20 @@ const getApiStr = (url) => {
 }
 
 // 获取对应的配置内容
-const getConfig = (api,res) => {
-  if(!api){
+const getApiConfig = (apiName,res) => {
+  if(!apiName){
     return 
   }
   //需要进行容错处理。
   try{
-    let context = require(`../api/${api}`);
+    let context = require(`../api/${apiName}`);
     return context;
   } catch (e){
     res.json({
       status: 0,
-      message:`api: "${api}" 不存在`
+      message:`api: "${apiName}" 不存在`
     })
-    console.log(`[music-api] "${api}" 不存在`.warn)
+    console.log(`[music-api] "${apiName}" 不存在`.warn)
     return null
   }
 }
@@ -40,7 +40,7 @@ const formatTime = (time) =>{
 }
 
 module.exports = {
-  getApiStr,
-  getConfig,
+  getApiName,
+  getApiConfig,
   formatTime
 }

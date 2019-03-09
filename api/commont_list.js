@@ -54,7 +54,6 @@ const config = {
         })
       },
     };
-
     return newData
   }
 } 
