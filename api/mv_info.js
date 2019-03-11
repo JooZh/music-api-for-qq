@@ -1,26 +1,35 @@
-const formDate = require('../utils/date')
-const config = {
-  url: '',
-  options: {
-    data: {
-      mvinfo: {
-        module: "video.VideoDataServer",
-        method: "get_video_info_batch",
-        param: {
-          vidlist: ["v00149ipnk5"],
-          required: [
-            "vid",
-            "cover_pic",
-            "duration",
-            "singers",
-            "name",
-            "desc",
-            "playcnt",
-            "pubdate"
-          ]
-        }
+const formatDate = require('../utils/date')
+const {formatTime} = require('../utils/utils')
+
+const options = {
+  data: {
+    mvinfo: {
+      module: "video.VideoDataServer",
+      method: "get_video_info_batch",
+      param: {
+        vidlist: ["v00149ipnk5"],
+        required: [
+          "vid",
+          "cover_pic",
+          "duration",
+          "singers",
+          "name",
+          "desc",
+          "playcnt",
+          "pubdate"
+        ]
       }
     }
+  }
+}
+
+const config = {
+  url: '',
+  merge: (query,dotProp)=>{
+    if(query.mv_mid){
+      dotProp.set(options, 'data.mvinfo.param.vidlist', [query.mv_mid])
+    }
+    return options
   },
   handle: (res) => {
     let mvinfo = res.mvinfo.data
@@ -32,10 +41,10 @@ const config = {
       mv_mid:mvinfo.vid,
       mv_desc:mvinfo.desc,
       interval_num:mvinfo.duration,
-      interval_str: `0${(mvinfo.duration/60).toFixed(2)}`,
+      interval_str: formatTime(mvinfo.duration),
       play_num:mvinfo.playcnt,
       play_str:`${(mvinfo.playcnt/10000).toFixed(1)}万`,
-      pub_date:formDate(mvinfo.pubdate),
+      pub_date:formatDate(mvinfo.pubdate),
       singers: mvinfo.singers.map(item=>item.name).join('/')
     }
     return newData

@@ -1,25 +1,31 @@
 // 歌手专辑列表
-const config = {
-  url: '',
-  options: {
-    data: {
-      albumlib: {
-        method: "get_album_by_tags",
-        module: "music.web_album_library",
-        param: {
-          area: -1,
-          company: -1,
-          genre: -1,
-          type: -1,
-          year: -1,
-          sort: 2,
-          // get_tags: 1,
-          sin: 0,
-          num: 20,
-          // click_albumid: 0
-        }
+const options = {
+  data: {
+    albumlib: {
+      method: "get_album_by_tags",
+      module: "music.web_album_library",
+      param: {
+        area: -1,
+        company: -1,
+        genre: -1,
+        type: -1,
+        year: -1,
+        sort: 2,
+        sin: 0,
+        num: 20,
       }
     }
+  }
+},
+const config = {
+  url: '',
+  merge: (query, dotProp) => {
+    Object.keys(query).forEach(key=>{
+      query[key] =  Number(query[key])
+    })
+    let param = options.data.albumlib.param;
+    options.data.albumlib.param = Object.assign(param, query)
+    return options
   },
   handle: (res,picSize) => {
     let data = res.albumlib.data

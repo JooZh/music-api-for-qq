@@ -1,35 +1,47 @@
 // 歌手专辑列表
-const config = {
-  url: '',
-  options: {
-    data: {
-      "songinfo": {
-        "module": "music.pf_song_detail_svr",
-        "method": "get_song_detail_yqq",
-        "param": {
-          "song_type": 0,
-          "song_mid": "002E3MtF0IAMMY",
-          "song_id": 200255722
-        },
+const options = {
+  data: {
+    "songinfo": {
+      "module": "music.pf_song_detail_svr",
+      "method": "get_song_detail_yqq",
+      "param": {
+        "song_type": 0,
+        "song_mid": "002E3MtF0IAMMY",
+        "song_id": 200255722
       },
-      "mv": {
-        "module": "MvService.MvInfoProServer",
-        "method": "GetMvBySongid",
-        "param": {
-          "mids": ["002E3MtF0IAMMY"]
-        }
-      },
-      "song_gedan": {
-        "module": "music.mb_gedan_recommend_svr",
-        "method": "get_related_gedan",
-        "param": {
-          "song_id": 200255722,
-          "song_type": 1,
-          "sin": 0,
-          "last_id": 0
-        }
+    },
+    "mv": {
+      "module": "MvService.MvInfoProServer",
+      "method": "GetMvBySongid",
+      "param": {
+        "mids": ["002E3MtF0IAMMY"]
+      }
+    },
+    "song_gedan": {
+      "module": "music.mb_gedan_recommend_svr",
+      "method": "get_related_gedan",
+      "param": {
+        "song_id": 200255722,
+        "song_type": 1,
+        "sin": 0,
+        "last_id": 0
       }
     }
+  }
+}
+
+const config = {
+  url: '',
+  merge: (query,dotProp)=>{
+    if(query.song_mid){
+      dotProp.set(options, 'data.songinfo.param.song_mid', query.song_mid);
+      dotProp.set(options, 'data.mv.param.mids', [query.song_mid])
+    }
+    if(query.song_id){
+      dotProp.set(options, 'data.songinfo.param.song_id', query.song_id)
+      dotProp.set(options, 'data.song_gedan.param.song_id', query.song_id)
+    }
+    return options
   },
   handle: (res,picSize) => {
     let song_mv = []

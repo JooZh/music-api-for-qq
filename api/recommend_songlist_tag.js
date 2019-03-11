@@ -1,21 +1,30 @@
 // 歌单为你推荐
+const options = {
+  picSize: 300,
+  data:{
+    playlist:{
+      method: "get_playlist_by_category",
+      module: "playlist.PlayListPlazaServer",
+      param: {
+        id: 64,
+        curPage: 1,
+        size: 20,
+        order: 5,
+        titleid: 64
+      }
+    }
+  }
+}
 const config = {
   url: '',
-  options: {
-    data:{
-      playlist:{
-        method: "get_playlist_by_category",
-        module: "playlist.PlayListPlazaServer",
-        picSize: 300,
-        param: {
-          id: 64,
-          curPage: 1,
-          size: 20,
-          order: 5,
-          titleid: 64
-        }
-      }
-    }    
+  merge: (query,dotProp)=>{
+    if (query.picSize) {
+      dotProp.set(options, 'picSize', query.picSize)
+      dotProp.delete(query, 'picSize');
+    }
+    let param = options.data.playlist.param;
+    options.data.playlist.param = Object.assign(param, query)
+    return options
   },
   handle: (res,picSize) => {
     let data = res.playlist.data

@@ -1,6 +1,6 @@
 ## 获取歌手专辑列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/singer_album
@@ -29,15 +29,10 @@ http://localhost:8080/music/api/singer_album
 ```js
 axios.get(url, {
   params:{
-    picSize:800,
-    data:{
-      singerAlbum:{
-        singermid: "002J4UUk29y8BY",
-        order: "time",
-        begin: 0,
-        num: 30,
-      }
-    }    
+    singermid: "002J4UUk29y8BY",
+    order: "time",
+    begin: 0,
+    num: 30,
   }
 }).then((response)=>{
   response.data

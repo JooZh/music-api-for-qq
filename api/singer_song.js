@@ -1,15 +1,22 @@
 
 const {formatTime} = require('../utils/utils')
+const options = {
+  'ct': 24,
+  'singermid': '002J4UUk29y8BY',
+  'order': 'listen',
+  'begin': 0,
+  'num': 30,
+  'songstatus': 1
+}
 // 歌手歌曲列表
 const config = {
   url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg',
-  options:{
-    'ct': 24,
-    'singermid': '002J4UUk29y8BY',
-    'order': 'listen',
-    'begin': 0,
-    'num': 30,
-    'songstatus': 1
+  merge: (query,dotProp)=>{
+    if(query.singer_mid){
+      dotProp.set(options, 'singermid', query.singer_mid);
+      dotProp.delete(query, 'singer_mid');
+    }
+    return Object.assign(options,query)
   },
   handle:(res) => {
     let data = res.data

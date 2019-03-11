@@ -1,6 +1,6 @@
 ## 获取歌单详情
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/album_detail
@@ -16,7 +16,7 @@ http://localhost:8080/music/api/album_detail
 
 | 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
 | :-------- | -------------- | ------ | ---- | -------- | ------------------ |
-| albummid | 003ui8B10AtGES | string | *    | 无       | 歌单的唯一标识     |
+| album_mid | 003ui8B10AtGES | string | *    | 无       | 歌单的唯一标识     |
 
 #### 请求方式
 
@@ -25,7 +25,7 @@ http://localhost:8080/music/api/album_detail
 ```js
 axios.get(url, {
   params:{
-    albummid: '003ui8B10AtGES'
+    album_mid: '003ui8B10AtGES'
   }
 }).then((response)=>{
   response.data

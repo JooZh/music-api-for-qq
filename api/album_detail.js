@@ -1,9 +1,16 @@
 const {formatTime} = require('../utils/utils');
 // 相似歌手列表
+const options = {
+  albummid: "003ui8B10AtGES"
+}
 const config = {
   url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_album_info_cp.fcg',
-  options: {
-    albummid: "003ui8B10AtGES"
+  merge: (query,dotProp)=>{
+    if(query.album_mid){
+      dotProp.set(options, 'albummid', query.album_mid)
+      dotProp.delete(query, 'album_mid');
+    }
+    return Object.assign(options,query)
   },
   handle: (res) => {
     let data = res.data

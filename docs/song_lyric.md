@@ -1,6 +1,6 @@
 ## 获取歌曲歌词
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/song_lyric
@@ -15,7 +15,7 @@ http://localhost:8080/music/api/song_lyric
 
 | 参数名   | 默认值 | 类型   | 必填 | 可选参数                          | 说明               |
 | :------- | ------ | ------ | ---- | --------------------------------- | ------------------ |
-| songmid | 001Qu4I30eVFYb | number | *    | 无 | 歌曲的标识 |
+| song_mid | 001Qu4I30eVFYb | number | *    | 无 | 歌曲的标识 |
 
 
 #### 请求方式
@@ -25,7 +25,7 @@ http://localhost:8080/music/api/song_lyric
 ```js
 axios.get(url, {
   params:{
-    songmid:'001Qu4I30eVFYb'
+    song_mid:'001Qu4I30eVFYb'
   }  
 }).then((response)=>{
   response.data

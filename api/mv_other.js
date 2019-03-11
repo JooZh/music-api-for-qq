@@ -1,28 +1,37 @@
 // 歌手专辑列表
-const formDate = require('../utils/date')
-const config = {
-  url: '',
-  options: {
-    data: {
-      other: {
-        module: "video.VideoLogicServer",
-        method: "rec_video_byvid",
-        param: {
-          vid: "v00149ipnk5",
-          required: [
-            "vid", 
-            "cover_pic", 
-            "duration",  
-            "name", 
-            "desc", 
-            "playcnt", 
-            "pubdate",  
-            "uploader_nick",  
-          ],
-          support: 1
-        }
+const formatDate = require('../utils/date')
+const {formatTime} = require('../utils/utils')
+
+const options = {
+  data: {
+    other: {
+      module: "video.VideoLogicServer",
+      method: "rec_video_byvid",
+      param: {
+        vid: "v00149ipnk5",
+        required: [
+          "vid", 
+          "cover_pic", 
+          "duration",  
+          "name", 
+          "desc", 
+          "playcnt", 
+          "pubdate",  
+          "uploader_nick",  
+        ],
+        support: 1
       }
     }
+  }
+}
+
+const config = {
+  url: '',
+  merge: (query,dotProp)=>{
+    if(query.mv_mid){
+      dotProp.set(options, 'data.other.param.vid', query.mv_mid)
+    }
+    return options
   },
   handle: (res) => {
     let other_list = res.other.data.list
@@ -33,10 +42,10 @@ const config = {
         mv_mid:item.vid,
         mv_desc:item.desc,
         interval_num:item.duration,
-        interval_str: `0${(item.duration/60).toFixed(2)}`,
+        interval_str: formatTime(item.duration),
         play_num:item.playcnt,
         play_str:`${(item.playcnt/10000).toFixed(1)}万`,
-        pub_date:formDate(item.pubdate),
+        pub_date:formatDate(item.pubdate),
         uploader_nick:item.uploader_nick
       }
     })

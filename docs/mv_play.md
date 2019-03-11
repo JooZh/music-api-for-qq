@@ -1,38 +1,66 @@
-##### 获取歌手详情：
+## 获取MV播放链接
+
+#### 全路径
+
+```
+http://localhost:8080/music/api/mv_info
+```
+
+#### 前置条件
+
+> 需要获得mv的 mid 
+> 获取歌曲相关接口。
+
+#### 参数说明
+
+| 参数名   | 默认值 | 类型   | 必填 | 可选参数                          | 说明               |
+| :------- | ------ | ------ | ---- | --------------------------------- | ------------------ |
+| mv_mid | v00149ipnk5 | string | *    | 无 | 唯一标识 |
+
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值。
+该接口目前只支持单个歌曲的数据返回。
 
 ```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
+axios.get(url, {
+  params:{
+    mv_mid:"v00149ipnk5"
+  }  
+}).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:{
+    f10:[
+      "http://220.169.153.25/vcloud1049......RFV1yw4f51001539132.f10.mp4?...."
+      "http://220.169.153.26/vcloud1049......RFV1yw4f51001539132.f10.mp4?...."
+      "http://220.169.153.27/vcloud1049......RFV1yw4f51001539132.f10.mp4?...."
+    ],
+    f20:[
+      "http://220.169.153.25/vcloud1049......RFV1yw4f51001539132.f20.mp4?...."
+      "http://220.169.153.26/vcloud1049......RFV1yw4f51001539132.f20.mp4?...."
+      "http://220.169.153.27/vcloud1049......RFV1yw4f51001539132.f20.mp4?...."
+    ],
+    f30:[
+      "http://220.169.153.25/vcloud1049......RFV1yw4f51001539132.f30.mp4?...."
+      "http://220.169.153.26/vcloud1049......RFV1yw4f51001539132.f30.mp4?...."
+      "http://220.169.153.27/vcloud1049......RFV1yw4f51001539132.f30.mp4?...."
+    ],
+    f40:[
+      "http://220.169.153.25/vcloud1049......RFV1yw4f51001539132.f40.mp4?...."
+      "http://220.169.153.26/vcloud1049......RFV1yw4f51001539132.f40.mp4?...."
+      "http://220.169.153.27/vcloud1049......RFV1yw4f51001539132.f40.mp4?...."
+    ],
+  }
 }
 ```
 
-```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
-      },
-      ......
-    ]
-}
-```

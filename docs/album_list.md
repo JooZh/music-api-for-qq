@@ -1,6 +1,6 @@
 ## 获取歌单列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/album_list
@@ -33,18 +33,14 @@ http://localhost:8080/music/api/album_list
 ```js
 axios.get(url, {
   params:{
-    data: {
-      albumlib: {
-        area: -1,
-        company: -1,
-        genre: -1,
-        type: -1,
-        year: -1,
-        sort: 2,
-        sin: 0,
-        num: 20,
-      }
-    }
+    area: -1,
+    company: -1,
+    genre: -1,
+    type: -1,
+    year: -1,
+    sort: 2,
+    sin: 0,
+    num: 20,
   }  
 }).then((response)=>{
   response.data

@@ -1,6 +1,6 @@
 ## 获取粉丝上传MV列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/singer_fans_mv
@@ -16,7 +16,7 @@ http://localhost:8080/music/api/singer_fans_mv
 
 | 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
 | :-------- | -------------- | ------ | ---- | -------- | ------------------ |
-| singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
+| singer_mid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
 | begin     | 0              | number | *    | 无       | 开始查询位置       |
 | num       | 5             | number | *    | 无       | 每次查询返回的条数 |
 | order     | time         | string | *    | ['listen','time'] | 列表的排序方式     |
@@ -28,7 +28,7 @@ http://localhost:8080/music/api/singer_fans_mv
 ```js
 axios.get(url, {
   params:{
-    singermid: '002J4UUk29y8BY',
+    singer_mid: '002J4UUk29y8BY',
     begin: 0,
     num: 5,
     order: 'time'

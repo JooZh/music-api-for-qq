@@ -30,6 +30,7 @@ const options = {
     }
   }
 }
+
 const config = {
   url: '',
   merge: (query,dotProp)=>{
@@ -51,7 +52,7 @@ const config = {
       recommend_url:urls[2],
       play_urls:urls
     }
-    return res
+    return newData
   }
 }
 

@@ -1,6 +1,6 @@
 ## 获取歌单列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/song_detail
@@ -26,18 +26,8 @@ http://localhost:8080/music/api/song_detail
 ```js
 axios.get(url, {
   params:{
-    data: {
-      songinfo: {
-        song_mid: "002E3MtF0IAMMY",
-        song_id: 200255722
-      },
-      mv: {
-        mids: ["002E3MtF0IAMMY"]
-      },
-      song_gedan: {
-        song_id: 200255722,
-      }
-    }
+    song_mid: "002E3MtF0IAMMY",
+    song_id: 200255722
   }  
 }).then((response)=>{
   response.data

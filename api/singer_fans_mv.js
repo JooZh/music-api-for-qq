@@ -1,14 +1,21 @@
 
 // 歌手mv 列表
+const options = {
+  singermid: "002J4UUk29y8BY",
+  cid: 205360581,
+  order: 'time',
+  begin: 0,
+  num: 5,
+}
+
 const config = {
   url:'https://c.y.qq.com/mv/fcgi-bin/fcg_singer_mv.fcg',
-  options:{
-    singermid: "002J4UUk29y8BY",
-    cid: 205360581,
-    order: 'time',
-    begin: 0,
-    num: 5,
-    // cmd: 1
+  merge: (query,dotProp)=>{
+    if(query.singer_mid){
+      dotProp.set(options, 'singermid', query.singer_mid)
+      dotProp.delete(query, 'singer_mid');
+    }
+    return Object.assign(options,query)
   },
   handle:(res) => {
     let data = res.data

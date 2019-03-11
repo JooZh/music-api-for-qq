@@ -1,11 +1,18 @@
 
+const options = {
+  platform: "h5",
+  type: "top",
+  topid: 26
+}
 // 排行榜详情
 const config = {
   url:'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
-  options:{
-    platform: "h5",
-    type: "top",
-    topid: 26
+  merge: (query,dotProp)=>{
+    if(query.top_id){
+      dotProp.set(options, 'topid', query.top_id)
+      dotProp.delete(query, 'top_id');
+    }
+    return Object.assign(options,query)
   },
   handle:(res) => {
     let data = res

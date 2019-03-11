@@ -1,6 +1,6 @@
 ## 获取歌手列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/commont_list
@@ -18,9 +18,7 @@ http://localhost:8080/music/api/commont_list
 
 | 参数名   | 默认值 | 类型   | 必填 | 可选参数                          | 说明               |
 | :------- | ------ | ------ | ---- | --------------------------------- | ------------------ |
-| topid     | v00149ipnk5  | string / number | *    | 无 | MV mid  或者 专辑 id  或者 歌曲 id |
-| reqtype | 2   | number | *    | 无 | 未知   |
-| biztype | 5  | number | *    | 无         | 未知 |
+| id     | v00149ipnk5  | string / number | *    | 无 | MV mid  或者 专辑 id  或者 歌曲 id |
 | pagenum | 0      | number | * | 无 | 开始加载的位置 |
 | pagesize | 25   | number | * | 无 | 每次加载多少数量 |
 
@@ -32,9 +30,7 @@ http://localhost:8080/music/api/commont_list
 ```js
 axios.get(url, {
   params:{
-    reqtype: 2,
-    biztype: 5,
-    topid: "v00149ipnk5",
+    id: "v00149ipnk5",
     pagenum: 0,
     pagesize: 25,
   }  

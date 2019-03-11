@@ -1,10 +1,18 @@
 // 相似歌手列表
+const options =  {
+  singermid: '0025NhlN2yWrP4',
+  utf8: 1,
+  format: 'xml'
+}
 const config = {
   url: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_singer_desc.fcg',
-  options: {
-    singermid: '0025NhlN2yWrP4',
-    utf8: 1,
-    format: 'xml'
+  
+  merge: (query,dotProp)=>{
+    if(query.singer_mid){
+      dotProp.set(options, 'singermid', query.singer_mid)
+      dotProp.delete(query, 'singer_mid');
+    }
+    return Object.assign(options,query)
   },
   handle: (res) => {
     let data = res;

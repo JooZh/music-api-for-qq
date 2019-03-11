@@ -1,12 +1,16 @@
 // 相似歌手列表
+const options = {
+  singer_mid: "0025NhlN2yWrP4",
+  start: 0,
+  num: 30,
+  utf8: 1,
+  picSize: 300
+}
+
 const config = {
   url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_simsinger.fcg',
-  options: {
-    singer_mid: "0025NhlN2yWrP4",
-    start: 0,
-    num: 30,
-    utf8: 1,
-    picSize: 300
+  merge: (query,dotProp)=>{
+    return Object.assign(options,query)
   },
   handle: (res, picSize) => {
     let data = res.singers

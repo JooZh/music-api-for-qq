@@ -3,10 +3,17 @@
 const base64 = require('js-base64').Base64
 const Lyric = require('../utils/lyric')
 
+const options = {
+  songmid: "001Qu4I30eVFYb"
+}
 const config = {
   url:'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg',
-  options:{
-    songmid: "001Qu4I30eVFYb"
+  merge: (query,dotProp)=>{
+    if(query.song_mid){
+      dotProp.set(options, 'songmid', query.song_mid)
+      dotProp.delete(query, 'song_mid');
+    }
+    return Object.assign(options,query)
   },
   handle:(res) => {
     let data = res.lyric

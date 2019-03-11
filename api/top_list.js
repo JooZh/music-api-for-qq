@@ -1,18 +1,21 @@
 
 // 排行榜列表
+
+const options = {
+  platform: "h5"
+}
+
 const config = {
   url:'https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg',
   merge: (query, dotProp)=>{
-    return {
-      platform: "h5"
-    }
+    return Object.assign(options,query)
   },
   handle:(res,picSize) => {
     let data = res.data
     let newData = [];
     data.topList.forEach(item => {
       newData.push({
-        id:item.id,
+        top_id:item.id,
         top_pic:item.picUrl,
         top_title:item.topTitle,
         listen_num:item.listenCount,

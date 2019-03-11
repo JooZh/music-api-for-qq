@@ -1,8 +1,15 @@
 // 歌手关注度
+const options = {
+  singermid: "002J4UUk29y8BY"
+}
 const config = {
   url:'https://c.y.qq.com/rsc/fcgi-bin/fcg_order_singer_getnum.fcg',
-  options:{
-    singermid: "002J4UUk29y8BY"
+  merge: (query,dotProp)=>{
+    if(query.singer_mid){
+      dotProp.set(options, 'singermid', query.singer_mid)
+      dotProp.delete(query, 'singer_mid');
+    }
+    return Object.assign(options,query)
   },
   handle: (res) => {
     let newData = {

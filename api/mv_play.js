@@ -1,17 +1,23 @@
 // 歌手专辑列表
-const config = {
-  url: '',
-  options: {
-    data: {
-      getMVUrl: {
-        module: "gosrf.Stream.MvUrlProxy",
-        method: "GetMvUrls",
-        param: {
-          vids: ["v00149ipnk5"],
-          request_typet: 10001
-        }
+const options = {
+  data: {
+    getMVUrl: {
+      module: "gosrf.Stream.MvUrlProxy",
+      method: "GetMvUrls",
+      param: {
+        vids: ["v00149ipnk5"],
+        request_typet: 10001
       }
     }
+  }
+}
+const config = {
+  url: '',
+  merge: (query,dotProp)=>{
+    if(query.mv_mid){
+      dotProp.set(options, 'data.getMVUrl.param.vids', [query.mv_mid])
+    }
+    return options
   },
   handle: (res) => {
     let mvurls = res.getMVUrl.data
@@ -26,8 +32,10 @@ const config = {
       })
     });
     let newData = {
-      recommend_url:play_urls[2],
-      play_urls:play_urls
+      f10: play_urls.filter(item=>/\.f10\.mp4/.test(item)),
+      f20: play_urls.filter(item=>/\.f20\.mp4/.test(item)),
+      f30: play_urls.filter(item=>/\.f30\.mp4/.test(item)),
+      f40: play_urls.filter(item=>/\.f40\.mp4/.test(item))
     }
     return newData
   }

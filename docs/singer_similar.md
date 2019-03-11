@@ -1,6 +1,6 @@
 ## 获取相似歌手列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/singer_similar

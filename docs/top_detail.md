@@ -16,7 +16,7 @@ http://localhost:8080/music/api/top_detail
 
 | 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
 | :-------- | -------------- | ------ | ---- | -------- | ------------------ |
-| topid | 26 | number | *    | 无       | 排行榜 id     |
+| top_id | 26 | number | *    | 无       | 排行榜 id     |
 
 #### 请求方式
 
@@ -25,7 +25,7 @@ http://localhost:8080/music/api/top_detail
 ```js
 axios.get(url, {
   params:{
-    topid: 26  
+    top_id: 26  
   }
 }).then((response)=>{
   response.data

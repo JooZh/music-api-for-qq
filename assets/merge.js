@@ -11,18 +11,17 @@ function merge(query, apiConfig){
     picSize:150,
     handle:apiConfig.handle
   };
-
-  // 如果配置了默认的图片大小
-  if(dotProp.has(apiConfig.options, 'options.picSize')){
-    mergeResult.picSize = apiConfig.options.picSize
-  }
+  // 合并传递参数和配置参数
+  let mergeQuery = apiConfig.merge(query, dotProp)
   // 自定义了图片的大小
+  if(mergeQuery.picSize){
+    mergeResult.picSize = mergeQuery.picSize
+  }
+
   if(query.picSize){
     mergeResult.picSize = query.picSize
   }
 
-  // 合并传递参数和配置参数
-  let mergeQuery = apiConfig.merge(query, dotProp)
 
   // 合并基础配置参数
   if(apiConfig.url){        // cqq
@@ -39,6 +38,7 @@ function merge(query, apiConfig){
       mergeResult.params.data = JSON.stringify(mergeQuery.data)
     }
   }
+  // console.log(mergeResult.params)
   return mergeResult
 }
 

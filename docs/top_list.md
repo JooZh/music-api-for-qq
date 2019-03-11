@@ -1,6 +1,6 @@
 ## 获取排行榜列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/top_list

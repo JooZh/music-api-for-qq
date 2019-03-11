@@ -1,6 +1,6 @@
 ## 获取歌手列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/singer_list
@@ -31,16 +31,12 @@ http://localhost:8080/music/api/singer_list
 axios.get(url, {
   params:{
     picSize:800,
-    data:{
-      singerList: {
-        area: -100,
-        sex: -100,
-        genre: -100,
-        index: -100,
-        sin: 0,
-        cur_page: 1
-      }
-    }
+    area: -100,
+    sex: -100,
+    genre: -100,
+    index: -100,
+    sin: 0,
+    cur_page: 1
   }  
 }).then((response)=>{
   response.data

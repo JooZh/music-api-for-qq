@@ -1,5 +1,6 @@
 // 歌手专辑列表
-const formDate = require('../utils/date')
+const formatDate = require('../utils/date')
+const {formatTime} = require('../utils/utils')
 
 const options = {
   data: {
@@ -51,10 +52,13 @@ const options = {
 const config = {
   url: '',
   options: options,
-  merge:(query,dotPorp) => {
-    let options = options;
-    
-     
+  merge: (query,dotProp)=>{
+    if(query.mv_mid){
+      dotProp.set(options, 'data.getMVUrl.param.vids', [query.mv_mid])
+      dotProp.set(options, 'data.mvinfo.param.vidlist', [query.mv_mid])
+      dotProp.set(options, 'data.other.param.vid', query.mv_mid)
+    }
+    return options
   },
   handle: (res) => {
     let mvurls = res.getMVUrl.data
@@ -83,10 +87,10 @@ const config = {
         mv_mid:mvinfo.vid,
         mv_desc:mvinfo.desc,
         interval_num:mvinfo.duration,
-        interval_str: `0${(mvinfo.duration/60).toFixed(2)}`,
+        interval_str: formatTime(mvinfo.duration),
         play_num:mvinfo.playcnt,
         play_str:`${(mvinfo.playcnt/10000).toFixed(1)}万`,
-        pub_date:formDate(mvinfo.pubdate),
+        pub_date:formatDate(mvinfo.pubdate),
         singers: mvinfo.singers.map(item=>item.name).join('/')
       },
       other_list: other_list.map(item=>{
@@ -96,10 +100,10 @@ const config = {
           mv_mid:item.vid,
           mv_desc:item.desc,
           interval_num:item.duration,
-          interval_str: `0${(item.duration/60).toFixed(2)}`,
+          interval_str: formatTime(mvinfo.duration),
           play_num:item.playcnt,
           play_str:`${(item.playcnt/10000).toFixed(1)}万`,
-          pub_date:formDate(item.pubdate),
+          pub_date:formatDate(item.pubdate),
           uploader_nick:item.uploader_nick,
         }
       })

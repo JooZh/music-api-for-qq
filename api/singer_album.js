@@ -1,20 +1,24 @@
 // 歌手专辑列表
+const options = {
+  data:{
+    singerAlbum:{
+      method: "get_singer_album",
+      module: "music.web_singer_info_svr",
+      param: {
+        singermid: "002J4UUk29y8BY",
+        order: "time",
+        begin: 0,
+        num: 30,
+      }
+    }
+  }    
+}
 const config = {
   url: '',
-  options: {
-    data:{
-      singerAlbum:{
-        method: "get_singer_album",
-        module: "music.web_singer_info_svr",
-        param: {
-          singermid: "002J4UUk29y8BY",
-          order: "time",
-          begin: 0,
-          num: 30,
-          // exstatus: 1
-        }
-      }
-    }    
+  merge: (query,dotProp)=>{
+    let param = options.data.singerAlbum.param;
+    options.data.singerAlbum.param = Object.assign(param, query)
+    return options
   },
   handle: (res,picSize) => {
     let data = res.singerAlbum.data

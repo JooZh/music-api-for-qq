@@ -1,4 +1,4 @@
-function formDate(date){
+function formatDate(date){
   if(!date){
     data = new Date()
   }else{
@@ -18,4 +18,4 @@ function formDate(date){
 }
 
 
-module.exports = formDate
+module.exports = formatDate

@@ -1,18 +1,27 @@
 // 新歌首发
-const config = {
-  url: '',
-  options: {
-    picSize: 300,
-    data:{
-      new_song:{
-        method: "GetNewSong",
-        module: "QQMusic.MusichallServer",
-        param: {
-          type:2,   // 1 内地。 2 港台  3.欧美 4 日本   5.韩国
-          size: 40
-        }
+
+const {formatTime} = require('../utils/utils')
+
+const options = {
+  picSize: 300,
+  data:{
+    new_song:{
+      method: "GetNewSong",
+      module: "QQMusic.MusichallServer",
+      param: {
+        type:2,   // 1 内地。 2 港台  3.欧美 4 日本   5.韩国
+        size: 40
       }
     }
+  }
+}
+const config = {
+  url: '',
+  merge: (query,dotProp)=>{
+    if(query.type){
+      dotProp.set(options, 'data.new_song.param.type', query.type)
+    }
+    return options
   },
   handle: (res,picSize) => {
     let data = res.new_song.data
@@ -32,7 +41,7 @@ const config = {
         album_name:item.album.name,
         album_pic:album_pic,
         interval_num:item.interval,
-        interval_str: `0${(item.interval/60).toFixed(2)}`,
+        interval_str: formatTime(item.interval),
         time_public: item.time_public,
         sub_title:item.subtitle,
         singers: item.singer.map(i => {
@@ -44,7 +53,7 @@ const config = {
         })
       })
     });
-    return newData
+    return res
   }
 }
 

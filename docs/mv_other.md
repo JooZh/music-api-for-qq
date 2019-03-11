@@ -1,38 +1,59 @@
-##### 获取歌手详情：
+## 获取MV详情页集合信息
+
+#### 全路径
+
+```
+http://localhost:8080/music/api/mv_other
+```
+
+#### 前置条件
+
+> 需要获得mv的 mid 
+> 获取歌曲相关接口。
+
+#### 参数说明
+
+| 参数名   | 默认值 | 类型   | 必填 | 可选参数                          | 说明               |
+| :------- | ------ | ------ | ---- | --------------------------------- | ------------------ |
+| mv_mid | v00149ipnk5 | string | *    | 无 | 唯一标识 |
+
+
+#### 请求方式
+
+参数结构和名称不可改变，只能修改参数值。
+该接口目前只支持单个歌曲的数据返回。
 
 ```js
-request: {
-    url:'/music/api/singer_detail'    	 		// 请求地址
-    params: {
-      singermid:'002J4UUk29y8BY',    		// 【必选】*	歌手的唯一标识
-      begin:0,    							// 【必选】*	单曲开始查询位置
-      num:30, 								// 【必选】*	单曲每次查询返回的条数
-      order:'listen'						// 【可选】		单曲列表的排序方式 
-    }
+axios.get(url, {
+  params:{
+    mv_mid:"v00149ipnk5"
+  }  
+}).then((response)=>{
+  response.data
+})
+```
+
+#### 返回数据
+
+```js
+{
+  message: "ok",
+  status: 0,
+  data:[
+    {
+      mv_name: "浙江卫视秋季盛典节目单出炉，......",
+      mv_pic: "http://y.gtimg.cn/music/photo_new/T023R750x750M000001uzMOD0UbAj5.jpg",
+      mv_mid: "0125H8iA3uIW52",
+      mv_desc: "",
+      interval_num: 226,
+      interval_str: "03.77",
+      play_num: 175563,
+      play_str: "17.6万",
+      pub_date: "2018-10-17",
+      uploader_nick: "华语现场"
+    },
+    .......
+  ]
 }
 ```
 
-```js
-response: {
-    singer_id: "5062",
-    singer_mid: "002J4UUk29y8BY",						// 歌手 mid
-    singer_name: "薛之谦",								  // 歌手名称
-    total: 208,											// 单曲总数
-    list:[{
-		index: 1,										//  序列号
-        albumid: 1796874,								//  所属专辑 id
-        albummid: "001mTkmb4GJlh4",				 		//  所属专辑 mid
-        albumdesc: "string",							//  所属专辑 描述
-        albumname: "string",						 	//  所属专辑 名称
-        songid: 200255722,								//  歌曲 id
-        songmid: "002E3MtF0IAMMY",						//  歌曲 mid
-        songname: "string",								//  歌曲名字
-        songorig: "string",								//  
-        songtype: 0,
-        strMediaMid: "002E3MtF0IAMMY",
-        vid: "g0022q7z0um"								//  mv id
-      },
-      ......
-    ]
-}
-```

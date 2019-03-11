@@ -1,6 +1,6 @@
 ## 获取歌曲播放资源列表
 
-#### 全路径:
+#### 全路径
 
 ```
 http://localhost:8080/music/api/song_play

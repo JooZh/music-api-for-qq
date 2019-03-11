@@ -19,10 +19,15 @@
   // let url= 'http://localhost:7001/music/api/singer_song'
 
   let params = {
-    song_mid: "003jjoM94WLiTf",
-    guid:88997979
+    area: -100,
+    sex: -100,
+    genre: -100,
+    index: -100,
+    sin: 0,
+    cur_page: 1,
+    picSize:500
   }
-  let url = 'http://localhost:7001/music/api/top_list'
+  let url = 'http://localhost:7001/music/api/singer_list'
 
   axios.get(url, {
     params: params

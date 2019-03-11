@@ -1,10 +1,13 @@
 
 // 推荐 mv 列表
+const options = {
+  cmd: "shoubo",
+  lan: "all"
+}
 const config = {
   url:'https://c.y.qq.com/mv/fcgi-bin/getmv_by_tag',
-  options:{
-    cmd: "shoubo",
-    lan: "all"
+  merge: (query, dotProp)=>{
+    return Object.assign(options,query)
   },
   handle:(res) => {
     let data = res.data

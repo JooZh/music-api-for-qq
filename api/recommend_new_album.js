@@ -1,32 +1,62 @@
 // 新歌首发
-const config = {
-  url: '',
-  options: {
-    picSize: 300,
-    data:{
-      new_album:{
-        method: "get_album_by_tags",
-        module: "music.web_album_library",
-        param: {
-          area: 3,    // 参考地区
-          company: -1,
-          genre: -1,
-          type: -1,
-          year: -1,
-          sort: 2,
-          get_tags: 1,
-          sin: 0,
-          num: 40,
-          click_albumid: 0
-        }
+const options = {
+  picSize: 300,
+  data: {
+    new_album:{
+      method: "get_album_by_tags",
+      module: "music.web_album_library",
+      param: {
+        area: 3,    // 参考地区
+        company: -1,
+        genre: -1,
+        type: -1,
+        year: -1,
+        sort: 2,
+        sin: 0,
+        num: 40,
       }
     }
+  }
+}
+
+const formatData = (list)=>{
+  return list.map(item => {
+    return {
+      id:item.id,
+      name:item.name,
+      area:item.area
+    }
+  })
+}
+
+const config = {
+  url: '',
+  merge: (query, dotProp) => {
+    if (query.picSize) {
+      dotProp.set(options, 'picSize', query.picSize)
+      dotProp.delete(query, 'picSize');
+    }
+    Object.keys(query).forEach(key=>{
+      query[key] =  Number(query[key])
+    })
+
+    let param = options.data.new_album.param;
+    options.data.new_album.param = Object.assign(param, query)
+    return options
   },
   handle: (res, picSize) => {
     let data = res.new_album.data
+    
     let newData = {
-      total: data.size,
-      list: []
+      total: data.total,
+      list: [],
+      tags:{
+        area:formatData(data.tags.area),
+        company:formatData(data.tags.company),
+        genre:formatData(data.tags.genre),
+        type:formatData(data.tags.type),
+        year:formatData(data.tags.year),
+      }
     };
     data.list.forEach(item => {
       let album_pic = `http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`
