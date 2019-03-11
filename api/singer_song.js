@@ -1,5 +1,5 @@
 
-const {formatTime} = require('../utils/utils')
+const {formatTime} = require('../utils/base')
 const options = {
   'ct': 24,
   'singermid': '002J4UUk29y8BY',

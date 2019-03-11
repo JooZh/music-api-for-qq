@@ -17,7 +17,7 @@ http://localhost:8080/music/api/singer_album
 | 参数名    | 默认值         | 类型   | 必填 | 可选参数 | 说明               |
 | :-------- | -------------- | ------ | ---- | -------- | ------------------ |
 | picSize | 150 | number |  | [150,300,500,800] | 头像尺寸大小 |
-| singermid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
+| singer_mid | 002J4UUk29y8BY | string | *    | 无       | 歌手的唯一标识     |
 | begin     | 0              | number | *    | 无       | 开始查询位置       |
 | num       | 30             | number | *    | 无       | 每次查询返回的条数 |
 | order     | time         | string | * | ['listen','time'] | 列表的排序方式     |
@@ -29,7 +29,7 @@ http://localhost:8080/music/api/singer_album
 ```js
 axios.get(url, {
   params:{
-    singermid: "002J4UUk29y8BY",
+    singer_mid: "002J4UUk29y8BY",
     order: "time",
     begin: 0,
     num: 30,

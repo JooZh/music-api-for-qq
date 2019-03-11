@@ -11,14 +11,14 @@ const getApiName = (url) => {
   return api
 }
 
-// 获取对应的配置内容
+// 获取对应的 api 配置项
 const getApiConfig = (apiName,res) => {
   if(!apiName){
     return 
   }
   //需要进行容错处理。
   try{
-    let context = require(`../api/${apiName}`);
+    let context = require(`../api/${apiName}.js`);
     return context;
   } catch (e){
     res.json({
@@ -30,6 +30,7 @@ const getApiConfig = (apiName,res) => {
   }
 }
 
+// 格式话播放时间
 const formatTime = (time) =>{
   let m = Math.floor(time/60);
   m = m < 10 ? `0${m}`: m
@@ -39,8 +40,29 @@ const formatTime = (time) =>{
   return `${m}:${s}`
 }
 
+// 格式化日期
+const formatDate = (date) => {
+  if(!date){
+    data = new Date()
+  }else{
+    data = new Date(date * 1000)
+  }
+  let year = data.getFullYear()
+  let month = data.getMonth() + 1
+  let day = data.getDate()
+  let hour = data.getHours()
+  let minutes = data.getMinutes()
+  let seconds = data.getSeconds()
+  function ad0 (n){
+    let s = n < 10 ? `0${n}`: n
+    return s
+  }
+  return `${year}-${ad0(month)}-${ad0(day)}`
+}
+
 module.exports = {
   getApiName,
   getApiConfig,
-  formatTime
+  formatTime,
+  formatDate
 }

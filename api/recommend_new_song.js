@@ -1,6 +1,6 @@
 // 新歌首发
 
-const {formatTime} = require('../utils/utils')
+const {formatTime} = require('../utils/base')
 
 const options = {
   picSize: 300,

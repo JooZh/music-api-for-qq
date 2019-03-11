@@ -1,4 +1,4 @@
-
+const {formatTime} = require('../utils/base');
 const options = {
   platform: "h5",
   type: "top",
@@ -37,7 +37,7 @@ const config = {
         album_desc:item.data.albumdesc,
         mv_mid:item.data.vid,
         interval_num:item.data.interval,
-        interval_str: `0${(item.data.interval/60).toFixed(2)}`,
+        interval_str: formatTime(item.data.interval),
         is_pay:item.data.pay.payplay,
         singers:item.data.singer,
       })

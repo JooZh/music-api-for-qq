@@ -1,6 +1,7 @@
 
 // 歌手mv 列表
-const formatDate = require('../utils/date')
+const {formatDate} = require('../utils/base')
+
 const options = {
   reqtype: 2,
   biztype: 5,

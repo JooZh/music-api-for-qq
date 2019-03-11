@@ -1,6 +1,4 @@
-const formatDate = require('../utils/date')
-const {formatTime} = require('../utils/utils')
-
+const {formatDate,formatTime} = require('../utils/base')
 const options = {
   data: {
     mvinfo: {

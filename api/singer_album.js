@@ -16,6 +16,10 @@ const options = {
 const config = {
   url: '',
   merge: (query,dotProp)=>{
+    if(query.singer_mid){
+      dotProp.set(options, 'data.singerAlbum.param.singermid', query.singer_mid)
+      dotProp.delete(query, 'singer_mid');
+    }
     let param = options.data.singerAlbum.param;
     options.data.singerAlbum.param = Object.assign(param, query)
     return options

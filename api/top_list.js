@@ -1,10 +1,8 @@
 
 // 排行榜列表
-
 const options = {
   platform: "h5"
 }
-
 const config = {
   url:'https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg',
   merge: (query, dotProp)=>{

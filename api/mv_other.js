@@ -1,6 +1,5 @@
 // 歌手专辑列表
-const formatDate = require('../utils/date')
-const {formatTime} = require('../utils/utils')
+const {formatDate,formatTime} = require('../utils/base')
 
 const options = {
   data: {

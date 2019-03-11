@@ -9,7 +9,7 @@ const ip = require('ip')
 
 // 引入文件
 require('./utils/colors')
-const utils = require('./utils/utils')
+const utils = require('./utils/base')
 const axios = require('./assets/axios')
 const merge = require('./assets/merge')
 
@@ -46,8 +46,10 @@ function router(path = '/api') {
       console.log(`[music-api] latest version: ${onlineVersion}, current version: ${localVersion}, please update timely.`.debug)
     }
   })
+
   // 创建路由
   const router = express.Router() 
+
   // 允许跨域
   router.use((req, res, next) => {
     if (req.path !== '/' && !req.path.includes('.')) {
@@ -61,45 +63,50 @@ function router(path = '/api') {
     }
     next()
   });
+
   // 开启 监听
   router.all(`${path}/*`, (req, res) => {
-    let apiName = utils.getApiName(req.url);                                        // 得到api名称
-    let query = JSON.stringify(req.query) === "{}" ? req.body : req.query;          // 得到参数    
-    let apiConfig = utils.getApiConfig(apiName,res);                                // 读取配置文件
-    let mergeReslut = merge(query, apiConfig)                           // 合并参数
-    
-    if(apiConfig){                                                                  // 请求资源
+    let apiName = utils.getApiName(req.url);                                          // 得到api名称
+    let query = JSON.stringify(req.query) === "{}" ? req.body : req.query;            // 得到参数    
+    let apiConfig = utils.getApiConfig(apiName, res);                                 // 读取配置文件
+    let mergeReslut = merge(query, apiConfig)                                         // 合并参数
+    if (apiConfig) {                                                                  // 请求资源
       axios(mergeReslut,apiName,res)
     }
   });
+
   // 需要将路由返回出去
   return router
 }
 
 // 服务模式 ============================================================
 function server (options) {
+  // 参数处理
   let port = (options && options.port) ? options.port : 8080;
   let cache = (options && options.cache) ? options.cache : false;
   let host = (options && options.host) ? options.host : 'localhost';
   let path = (options && options.path) ? options.path : '/music/api';
 
-  // 判断
+  // 判断路径是否错误
   if(path.indexOf('/') !== 0){
     throw new Error('The route must be opened with "/". eg: "/music/api"'.error)
   }
   // 解析当前传入的路由
   let paths = parsPath(path)
 
+  // 创建服务 
   const server = express()
-  const route = router(paths.router)
+
   // 手动 ip 地址配置
   if(ip.isV4Format(host)){
     host = ip.address();
   }
-  // 传入的 use 
+
+  // 使用传入的自定义 use 
   if(options && options.use && typeof options.use === 'function'){
     options.use(server,express)
   }
+
   // 开启缓存
   if(cache && typeof cache === 'boolean'){
     server.use(apicache('2 minutes', ((req, res) => res.statusCode === 200)))
@@ -112,6 +119,7 @@ function server (options) {
       next();
     });
   }
+
   // 解析post参数
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({
@@ -120,13 +128,16 @@ function server (options) {
 
   // 开启 gzip 压缩
   server.use(compression());
+
   // 使用路由
-  server.use(paths.server, route);
+  server.use(paths.server, router(paths.router));
   
   // 创建服务
   server.listen(port);
+
   // 输出请求接口信息
   console.log( `[music-api] server start: http://${host}:${port+path}/... `.debug,)
+
   // 将服务返回 提供给外部使用
   return server
 }

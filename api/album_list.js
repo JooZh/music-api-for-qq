@@ -48,8 +48,7 @@ const config = {
           album_name: item.album_name,
           album_pic:`http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`,
           public_time: item.public_time,
-          singers:item.singers,
-
+          singers:item.singers
         }
       }),
       tags:tags
