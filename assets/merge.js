@@ -3,7 +3,6 @@ const baseConfig = require('./config')
 const dotProp = require('dot-prop')
 
 function merge(query, apiConfig){
-  
   let mergeResult = {
     url:'',
     headers:null,
@@ -17,12 +16,9 @@ function merge(query, apiConfig){
   if(mergeQuery.picSize){
     mergeResult.picSize = mergeQuery.picSize
   }
-
   if(query.picSize){
     mergeResult.picSize = query.picSize
   }
-
-
   // 合并基础配置参数
   if(apiConfig.url){        // cqq
     mergeResult.url = apiConfig.url

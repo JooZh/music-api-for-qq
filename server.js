@@ -69,8 +69,9 @@ function router(path = '/api') {
     let apiName = utils.getApiName(req.url);                                          // 得到api名称
     let query = JSON.stringify(req.query) === "{}" ? req.body : req.query;            // 得到参数    
     let apiConfig = utils.getApiConfig(apiName, res);                                 // 读取配置文件
-    let mergeReslut = merge(query, apiConfig)                                         // 合并参数
+    let params =  query || {}                                                         // 兼容参数为空的时候
     if (apiConfig) {                                                                  // 请求资源
+      let mergeReslut = merge(params, apiConfig)                                       // 合并参数
       axios(mergeReslut,apiName,res)
     }
   });

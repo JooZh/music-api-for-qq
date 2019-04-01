@@ -16,7 +16,7 @@ const options = {
       }
     }
   }
-},
+}
 const config = {
   url: '',
   merge: (query, dotProp) => {
