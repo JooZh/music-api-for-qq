@@ -1,4 +1,4 @@
-## 获取推荐MV列表
+## 获取推荐新MV列表
 
 #### 全路径
 
@@ -18,7 +18,7 @@ http://localhost:8080/music/api/recommend_new_mv
 
 #### 请求方式
 
-参数结构和名称不可改变，只能修改参数值
+参数名称不可改变
 
 ```js
 axios.get(url).then((response)=>{

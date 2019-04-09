@@ -30,7 +30,7 @@ const getApiConfig = (apiName,res) => {
   }
 }
 
-// 格式话播放时间
+// 格式化播放时间
 const formatTime = (time) =>{
   let m = Math.floor(time/60);
   m = m < 10 ? `0${m}`: m

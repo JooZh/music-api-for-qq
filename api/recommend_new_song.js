@@ -53,7 +53,7 @@ const config = {
         })
       })
     });
-    return res
+    return newData
   }
 }
 

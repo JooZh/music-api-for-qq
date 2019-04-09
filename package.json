@@ -1,12 +1,13 @@
 {
   "name": "music-api-for-qq",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "qq music api server",
   "main": "server.js",
   "module": "server.js",
   "private": false,
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
+    
   },
   "files": [
     "utils",

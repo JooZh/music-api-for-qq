@@ -1,4 +1,4 @@
-## 获取推荐MV列表
+## 获取推荐新歌列表
 
 #### 全路径
 
@@ -21,7 +21,7 @@ http://localhost:8080/music/api/recommend_new_song
 
 #### 请求方式
 
-参数结构和名称不可改变，只能修改参数值
+参数名称不可改变
 
 ```js
 axios.get(url,{
@@ -39,27 +39,31 @@ axios.get(url,{
 {
   message: "ok",
   status: 0,
-  data:[
-    {
-      "mv_id": 1511853,
-      "mv_mid": "n0030difjse",
-      "mv_desc": "美国超新星强势圈粉",
-      "mv_score": 0,
-      "mv_title": "So Am I",
-      "mv_pic": "http://y.gtimg.cn/music/common/upload/uploadt_mv_recommend_conf/1203879.jpg",
-      "pub_date": "2019-03-07",
-      "listen_num": 12326,
-      "listen_str": "1.2万",
-      "singers": [
-        {
-          "id": 1520235,
-          "mid": "0015UgkM2WB8Go",
-          "name": "Ava Max"
-        }
-      ]
-    },
-    ......
-  ]
+  data:{
+  	total: 100,
+  	list:[
+      {
+        "song_id": 230544400,
+        "song_url": "http://stream0.qqmusic.qq.com/242544400.wma",
+        "song_name": "罗志祥",
+        "song_title": "罗志祥",
+        "song_mid": "004NTEZ70W953M",
+        "album_mid": "003ZTSn32YTO6c",
+        "album_name": "罗志祥",
+        "album_pic": "http://y.gtimg.cn/music/photo_new/T002R300x300M000003ZTSn32YTO6c.jpg",
+        "interval_num": 278,
+        "interval_str": "04:38",
+        "time_public": "2019-03-26",
+        "sub_title": "",
+        "singers": [{
+          "id": 4651,
+          "mid": "003jECh24XL3yh",
+          "name": "罗志祥"
+        }]
+      },
+      ......
+    ]
+  }
 }
 ```
 

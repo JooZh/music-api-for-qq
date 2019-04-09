@@ -20,8 +20,7 @@ http://localhost:8080/music/api/mv_info
 
 #### 请求方式
 
-参数结构和名称不可改变，只能修改参数值。
-该接口目前只支持单个歌曲的数据返回。
+参数名称不可改变。
 
 ```js
 axios.get(url, {

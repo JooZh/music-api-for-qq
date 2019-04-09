@@ -1,4 +1,4 @@
-## 获取推荐歌曲列表
+## 获取为你推荐列表
 
 #### 全路径
 
@@ -21,7 +21,7 @@ http://localhost:8080/music/api/recommend_songlist_hot
 
 #### 请求方式
 
-参数结构和名称不可改变，只能修改参数值
+参数名称不可改变
 
 ```js
 axios.get(url).then((response)=>{

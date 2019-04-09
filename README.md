@@ -165,20 +165,72 @@ devServer: {
         <th colspan="2" align="left">MV相关</th>
     </tr>
     <tr>
-        <td>获取MV详情：</td>
-        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_detail.md" target="_blank">http://localhost:8080/music/api/mv_detail</a></td>
+        <td>获取MV列表：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_list.md" target="_blank">http://localhost:8080/music/api/mv_list</a></td>
     </tr>
     <tr>
-        <td>获取MV文字介绍：</td>
-        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_info.md" target="_blank">http://localhost:8080/music/api/mv_info</a></td>
+        <td>获取MV详情(全部)：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_detail_all.md" target="_blank">http://localhost:8080/music/api/mv_detail_all</a></td>
     </tr>
     <tr>
-        <td>获取相关MV推荐：</td>
-        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_other.md" target="_blank">http://localhost:8080/music/api/mv_other</a></td>
+        <td>获取MV文字介绍(拆分)：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_detail_info.md" target="_blank">http://localhost:8080/music/api/mv_detail_info</a></td>
     </tr>
     <tr>
-        <td>获取MV播放链接：</td>
+        <td>获取相关MV推荐(拆分)：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_detail_other.md" target="_blank">http://localhost:8080/music/api/mv_detail_other</a></td>
+    </tr>
+    <tr>
+        <td>获取MV播放链接(拆分)：</td>
         <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/mv_play.md" target="_blank">http://localhost:8080/music/api/mv_play</a></td>
+    </tr>
+    <tr>
+        <th colspan="2" align="left">歌单相关</th>
+    </tr>
+    <tr>
+        <td>获取歌单列表：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/menu_list.md" target="_blank">http://localhost:8080/music/api/menu_list</a></td>
+    </tr>
+    <tr>
+        <td>获取歌单标签：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/menu_tags.md" target="_blank">http://localhost:8080/music/api/menu_tags</a></td>
+    </tr>
+    <tr>
+        <td>获取歌单详情：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/menu_detail.md" target="_blank">http://localhost:8080/music/api/menu_detail</a></td>
+    </tr>
+    <tr>
+        <th colspan="2" align="left">专辑相关</th>
+    </tr>
+    <tr>
+        <td>获取专辑列表和标签：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/album_list.md" target="_blank">http://localhost:8080/music/api/album_list</a></td>
+    </tr>
+    <tr>
+        <td>获取专辑详情：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/album_detail.md" target="_blank">http://localhost:8080/music/api/album_detail</a></td>
+    </tr>
+    <tr>
+        <th colspan="2" align="left">搜索相关</th>
+    </tr>
+    <tr>
+        <td>获取搜索关键字：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/search_hot_key.md" target="_blank">http://localhost:8080/music/api/search_hot_key</a></td>
+    </tr>
+    <tr>
+        <th colspan="2" align="left">焦点图相关</th>
+    </tr>
+    <tr>
+        <td>获取移动版焦点图：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/banner_h5.md" target="_blank">http://localhost:8080/music/api/banner_h5</a></td>
+    </tr>
+    <tr>
+        <td>获取PC版焦点图：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/banner_index.md" target="_blank">http://localhost:8080/music/api/banner_index</a></td>
+    </tr>
+    <tr>
+        <td>获取专辑焦点图：</td>
+        <td><a href="https://github.com/JooZh/music-api-for-qq/blob/master/docs/banner_album.md" target="_blank">http://localhost:8080/music/api/banner_album</a></td>
     </tr>
 </table>
 

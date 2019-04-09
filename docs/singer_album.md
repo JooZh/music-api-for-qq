@@ -24,7 +24,7 @@ http://localhost:8080/music/api/singer_album
 
 #### 请求方式
 
-参数结构和名称不可改变，只能修改参数值
+参数名称不可改变
 
 ```js
 axios.get(url, {
