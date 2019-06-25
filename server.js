@@ -98,11 +98,6 @@ function server (options) {
   // 创建服务 
   const server = express()
 
-  // 手动 ip 地址配置
-  if(ip.isV4Format(host)){
-    host = ip.address();
-  }
-
   // 使用传入的自定义 use 
   if(options && options.use && typeof options.use === 'function'){
     options.use(server,express)
