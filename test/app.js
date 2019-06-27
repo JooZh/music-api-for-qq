@@ -1,8 +1,8 @@
 
 
 // 服务模式
-const musicApi = require('./server');
-const c = require('child_process');
+const musicApi = require('../server');
+// const c = require('child_process');
 const ip = require('ip');
 
 const host = ip.address();
@@ -32,4 +32,4 @@ musicApi.server({
 
 
 // 启动浏览器
-c.exec(`start http://${host}:${port}/`);
+// c.exec(`start http://${host}:${port}/`);

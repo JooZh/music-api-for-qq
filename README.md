@@ -16,10 +16,11 @@ $ npm install music-api-for-qq -D
 ```js
 // 创建 server.js 文件
 const musicApi = require('music-api-for-qq')
-
+const ip = require('ip');
+const host = ip.address();
 musicApi.server({
   port: 7001,                           // 启动端口  默认 8080
-  host: '28.33.176.78',                 // 开启使用 ip 访问  默认访问为 localhost
+  host: host,                           // 开启使用 ip 访问  默认访问为 localhost
   path: '/music/api',                   // 自定义路径 默认为 /music/api
   cache: false,                         // 开启缓存 默认关闭缓存， 传入 数字 为分钟 传入 false 关闭
   use: function(server,express){        // 自定义的使用其他插件

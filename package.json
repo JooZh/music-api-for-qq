@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "cd examples && webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "node": " node app.js",
-    "nodemon": "nodemon app.js"
+    "test": " cd test && node app.js",
+    "test:hot": "cd test && nodemon app.js"
   },
   "files": [
     "utils",
