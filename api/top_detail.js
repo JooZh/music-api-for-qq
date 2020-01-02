@@ -23,23 +23,23 @@ const config = {
       listen_num:data.topinfo.listennum,
       listen_str: `${(data.topinfo.listennum/10000).toFixed(1)}万`,
       update_time: data.update_time,
-      week:data.date.substr(5),
+      week: data.date.substr(5),
       song_list:[],
     };
     data.songlist.forEach(item => {
       newData.song_list.push({
-        song_id:item.data.songid,
-        song_mid:item.data.songmid,
-        song_name:item.data.songname,
+        song_id: item.data.songid,
+        song_mid: item.data.songmid,
+        song_name: item.data.songname,
         album_id: item.data.albumid,
         album_mid: item.data.albummid,
         album_name: item.data.albumname,
-        album_desc:item.data.albumdesc,
-        mv_mid:item.data.vid,
-        interval_num:item.data.interval,
+        album_desc: item.data.albumdesc,
+        mv_mid: item.data.vid,
+        interval_num: item.data.interval,
         interval_str: formatTime(item.data.interval),
-        is_pay:item.data.pay.payplay,
-        singers:item.data.singer,
+        is_pay: item.data.pay.payplay,
+        singers: item.data.singer,
       })
     });
     

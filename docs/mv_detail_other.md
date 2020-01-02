@@ -40,7 +40,7 @@ axios.get(url, {
   status: 0,
   data:[
     {
-      mv_name: "浙江卫视秋季盛典节目单出炉，......",
+      mv_title: "浙江卫视秋季盛典节目单出炉，......",
       mv_pic: "http://y.gtimg.cn/music/photo_new/T023R750x750M000001uzMOD0UbAj5.jpg",
       mv_mid: "0125H8iA3uIW52",
       mv_desc: "",

@@ -1,4 +1,7 @@
 // 新歌首发
+
+const {getImage} = require('../utils/base')
+
 const options = {
   picSize: 300,
   data: {
@@ -59,12 +62,11 @@ const config = {
       }
     };
     data.list.forEach(item => {
-      let album_pic = `http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`
       newData.list.push({
         album_id: item.album_id,
         album_mid: item.album_mid,
         album_name: item.album_name,
-        album_pic: album_pic,
+        album_pic: getImage(2,picSize,item.album_mid),
         public_time: item.public_time,
         singers: item.singers.map(i => {
           return {

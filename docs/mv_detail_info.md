@@ -39,7 +39,7 @@ axios.get(url, {
   message: "ok",
   status: 0,
   data:{
-    mv_name: "喜欢你",
+    mv_title: "喜欢你",
     mv_pic: "http://y.gtimg.cn/music/photo_new/T015R640x360M101004EyEGU1Z2O9b.jpg",
     mv_mid: "v00149ipnk5",
     mv_desc: "G.E.M. 邓紫棋 - 喜欢你",

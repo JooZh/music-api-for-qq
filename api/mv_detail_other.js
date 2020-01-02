@@ -36,7 +36,7 @@ const config = {
     let other_list = res.other.data.list
     let newData = other_list.map(item => {
       return {
-        mv_name:item.name,
+        mv_title:item.name,
         mv_pic:item.cover_pic,
         mv_mid:item.vid,
         mv_desc:item.desc,

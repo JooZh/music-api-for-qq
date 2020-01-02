@@ -36,13 +36,14 @@ const config = {
       total:data.mv_list.data.total,
       mv_list:data.mv_list.data.list.map(item=>{
         return {
-          mv_name:item.title,
-          mv_pic:item.picurl,
-          mv_mid:item.vid,
-          singers:item.singers.map(item=>item.name).join('/'),
-          play_num:item.playcnt,
-          play_str:`${(item.playcnt/10000).toFixed(1)}万`,
-          pub_date:formatDate(item.pubdate)
+          mv_title: item.title,
+          mv_pic: item.picurl,
+          mv_mid: item.vid,
+          singer_name: item.singers.map(item=>item.name).join('/'),
+          singers: item.singers,
+          play_num: item.playcnt,
+          play_str: `${(item.playcnt/10000).toFixed(1)}万`,
+          pub_date: formatDate(item.pubdate)
         }
       }),
       mv_tags:{

@@ -1,6 +1,6 @@
 // 新歌首发
 
-const {formatTime} = require('../utils/base')
+const {formatTime,getImage} = require('../utils/base')
 
 const options = {
   picSize: 300,
@@ -30,7 +30,6 @@ const config = {
       list:[]
     };
     data.song_list.forEach(item => {
-      let album_pic = `http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album.mid}.jpg`
       newData.list.push({
         song_id:item.id,
         song_url:item.url,
@@ -39,7 +38,7 @@ const config = {
         song_mid:item.mid,
         album_mid:item.album.mid,
         album_name:item.album.name,
-        album_pic:album_pic,
+        album_pic: getImage(2,picSize,item.album.mid),
         interval_num:item.interval,
         interval_str: formatTime(item.interval),
         time_public: item.time_public,

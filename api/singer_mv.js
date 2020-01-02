@@ -1,4 +1,3 @@
-
 // 歌手mv 列表
 const options = {
   singermid: "002J4UUk29y8BY",
@@ -39,8 +38,8 @@ const config = {
         upload_nick:item.upload_nick,
         upload_pic:item.upload_pic,
         upload_date:item.date,
-        listen_num:item.listenCount,
-        listen_str:`${(item.listenCount/10000).toFixed(1)}万`,
+        play_num:item.listenCount,
+        play_str:`${(item.listenCount/10000).toFixed(1)}万`,
       })
     });
     return newData

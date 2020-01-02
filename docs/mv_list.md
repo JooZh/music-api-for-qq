@@ -54,7 +54,7 @@ axios.get(url, {
     }
     mv_list:[
       {
-        "mv_name": "Kill This Love",
+        "mv_title": "Kill This Love",
         "mv_pic": "http://y.gtimg.cn/music/photo_new/T015R640x360M1010003x77W1X0FA3.jpg",
         "mv_mid": "l0030x5i9ek",
         "singers": "BLACKPINK",

@@ -81,7 +81,7 @@ const config = {
       recommend_url:play_urls[2],
       play_urls:play_urls,
       mv_info:{
-        mv_name:mvinfo.name,
+        mv_title:mvinfo.name,
         mv_pic:mvinfo.cover_pic,
         mv_mid:mvinfo.vid,
         mv_desc:mvinfo.desc,
@@ -90,11 +90,12 @@ const config = {
         play_num:mvinfo.playcnt,
         play_str:`${(mvinfo.playcnt/10000).toFixed(1)}万`,
         pub_date:formatDate(mvinfo.pubdate),
-        singers: mvinfo.singers.map(item=>item.name).join('/')
+        singer_name: mvinfo.singers.map(item=>item.name).join('/'),
+        singers: mvinfo.singers
       },
       other_list: other_list.map(item=>{
         return {
-          mv_name:item.name,
+          mv_title:item.name,
           mv_pic:item.cover_pic,
           mv_mid:item.vid,
           mv_desc:item.desc,

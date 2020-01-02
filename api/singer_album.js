@@ -1,4 +1,6 @@
 // 歌手专辑列表
+const {getImage} = require('../utils/base');
+
 const options = {
   data:{
     singerAlbum:{
@@ -31,22 +33,21 @@ const config = {
       singer_id: data.singer_id,
       singer_mid: data.singer_mid,
       singer_name: data.singer_name,
-      list:[]
+      list: []
     };
     data.list.forEach(item => {
-      let album_pic = `http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`
       newData.list.push({
         album_id: item.albumid,
         album_mid: item.album_mid,
         album_name: item.album_name,
         album_type: item.albumtype,
-        album_pic: album_pic,
-        album_desc:item.desc,
+        album_pic: getImage(2,picSize,item.album_mid),
+        album_desc: item.desc,
         pub_time: item.pub_time,
-        listen_num:item.listen_count,
-        listen_str:`${(item.listen_count/10000).toFixed(1)}万`,
+        listen_num: item.listen_count,
+        listen_str: `${(item.listen_count/10000).toFixed(1)}万`,
         attribute5: item.attribute5,
-        score:item.score,
+        score: item.score,
         lan: item.lan,
       })
     });

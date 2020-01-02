@@ -60,9 +60,14 @@ const formatDate = (date) => {
   return `${year}-${ad0(month)}-${ad0(day)}`
 }
 
+const getImage = (type,size,id) =>{
+  return `http://y.gtimg.cn/music/photo_new/T00${type}R${size}x${size}M000${id}.jpg`
+}
+
 module.exports = {
   getApiName,
   getApiConfig,
   formatTime,
-  formatDate
+  formatDate,
+  getImage
 }

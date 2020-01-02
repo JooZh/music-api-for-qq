@@ -37,6 +37,7 @@ const config = {
           mv_mid:item.vid,
           isonly:item.isonly,
           singers: item.singer,
+          singer_name: item.singer.map(v=>v.name).join('/')
         }
       }),
       song_ids:data.songids.split(',')

@@ -35,8 +35,9 @@ const config = {
           song_mid: item.songmid,
           song_name: item.songname,
           song_orig: item.songorig,
-          mv_mid:item.vid,
-          singers:item.singer,
+          mv_mid: item.vid,
+          singers: item.singer,
+          singer_name: item.singer.map(v=>v.name).join('/')
         }      
       })
     }

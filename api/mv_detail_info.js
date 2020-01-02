@@ -34,7 +34,7 @@ const config = {
     let mvinfokey = Object.keys(mvinfo)[0]
     mvinfo = mvinfo[mvinfokey]
     let newData = {
-      mv_name:mvinfo.name,
+      mv_title:mvinfo.name,
       mv_pic:mvinfo.cover_pic,
       mv_mid:mvinfo.vid,
       mv_desc:mvinfo.desc,
@@ -43,7 +43,8 @@ const config = {
       play_num:mvinfo.playcnt,
       play_str:`${(mvinfo.playcnt/10000).toFixed(1)}万`,
       pub_date:formatDate(mvinfo.pubdate),
-      singers: mvinfo.singers.map(item=>item.name).join('/')
+      singers: mvinfo.singers,
+      singer_name: mvinfo.singers.map(v=>v.name).join('/')
     }
     return newData
   }

@@ -1,4 +1,6 @@
 // 歌手专辑列表
+const {getImage} = require('../utils/base');
+
 const options = {
   data: {
     albumlib: {
@@ -46,9 +48,10 @@ const config = {
           album_id: item.album_id,
           album_mid: item.album_mid,
           album_name: item.album_name,
-          album_pic:`http://y.gtimg.cn/music/photo_new/T002R${picSize}x${picSize}M000${item.album_mid}.jpg`,
+          album_pic: getImage(2,picSize,item.album_mid),
           public_time: item.public_time,
-          singers:item.singers
+          singers:item.singers,
+          singer_name: item.singer.map(v=>v.name).join('/')
         }
       }),
       tags:tags

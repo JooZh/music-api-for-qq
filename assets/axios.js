@@ -6,6 +6,7 @@ require('../utils/colors')
 
 function request(mergeReslut, apiName, res) {
   // 发送请求
+  console.log(mergeReslut.url)
   axios.get(mergeReslut.url, {
     headers: mergeReslut.headers,
     params: mergeReslut.params

@@ -49,7 +49,7 @@ axios.get(url, {
       "http://isure.stream.qqmusic.qq.com/C400002Jbzn235xaQZ.m4a?guid=9449044610....."
     ],
     mv_info:{
-      mv_name: "喜欢你",
+      mv_title: "喜欢你",
       mv_pic: "http://y.gtimg.cn/music/photo_new/T015R640x360M101004EyEGU1Z2O9b.jpg",
       mv_mid: "v00149ipnk5",
       mv_desc: "G.E.M. 邓紫棋 - 喜欢你",
@@ -62,7 +62,7 @@ axios.get(url, {
     },
     other_list:[
       {
-        mv_name: "浙江卫视秋季盛典节目单出炉，......",
+        mv_title: "浙江卫视秋季盛典节目单出炉，......",
         mv_pic: "http://y.gtimg.cn/music/photo_new/T023R750x750M000001uzMOD0UbAj5.jpg",
         mv_mid: "0125H8iA3uIW52",
         mv_desc: "",
