@@ -1,6 +1,7 @@
 
 const {formatTime, getImage} = require('../utils/base')
 const options = {
+  'picSize':150,
   'ct': 24,
   'singermid': '002J4UUk29y8BY',
   'order': 'listen',
